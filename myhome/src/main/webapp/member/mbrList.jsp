@@ -17,7 +17,7 @@
 <body>
 
 <div>
-
+		<!-- dfjlksajflkajlfjmdoiaj -->
 
 	<div> Total : <c:out value="${total }"/> </div>
 	
