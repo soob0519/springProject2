@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>게시판 목록화면</title>
+	<title>게시판 목록화면11111111111</title>
 </head>
 <body>
 
@@ -23,11 +23,11 @@
     		<col width="20%"/>
     	</colgroup>
     	<tr>
-    		<th>번호</th>
-    		<th>제목</th>
-    		<th>글쓴이</th>
-    		<th>조회수</th>
-    		<th>등록일</th>
+    		<th>번호1111</th>
+    		<th>제목1111</th>
+    		<th>글쓴이1111</th>
+    		<th>조회수1111</th>
+    		<th>등록일11111111111</th>
     	</tr>
  
     	<c:forEach var="ls"  items="${datalist}">
