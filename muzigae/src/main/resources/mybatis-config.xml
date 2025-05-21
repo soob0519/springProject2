@@ -1,0 +1,6 @@
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.muzigae.dto.DbuyDto" alias="dbuyDto" />
+		<typeAlias type="com.muzigae.dto.DpurchaseDto" alias="dpurchaseDto" />
+	</typeAliases>
+</configuration>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.muzigae.mapper.PclistMapper">
+
+	<select id="selectFullList" resultType="Map">
+		SELECT BSEQID
+				,USER_ID
+				,NAME
+				,PHONE
+				,ADDR
+				,TO_CHAR(PDATE,'YYYY-MM-DD') PDATE
+				,TO_CHAR(PRICE,'FM999,999,999,999') PRICE
+		FROM 
+				DBUY
+		WHERE 
+				USER_ID = 'test1'
+	</select>
+
+</mapper>
