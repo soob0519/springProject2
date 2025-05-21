@@ -17,28 +17,28 @@ body {font-size: 14px; color: #111;}
 
 
 /* title_style */
-.prod_h2 {text-align: center; margin: 20px 0;}
-.prod_h3 {margin-bottom: 10px; font-size: 22px;}
-.prod_h4 {font-size: 20px;}
+.prod_h2 {text-align: center; margin: 20px 0; font-size: 30px;}
+.prod_h3 {margin: 50px 0 10px 0; font-size: 20px;}
+.prod_h4 {font-size: 18px;}
 .prod_h5 {font-size: 16px;}
 
 
 /* 헤더 */
 /* 공통 */
-#header {position: fixed; top: 0; width: 100%; background: #999; height: 100px; z-index: 9999; transition: .2s;}
+#header {position: fixed; top: 0; width: 100%; background: #999; height: 100px; z-index: 999; transition: .2s;}
 .header {}
 /* total_menu */
-.total_menu {width: 35px; height: 30px; cursor: pointer; top: 5px; transition: 0.2s;}
-.total_menu .menu_btn {position: relative; top: 30%; transition: .2s;}
-.menu_btn {position: relative; width: 100%; height: 100%;}
-.menu_btn span {position: absolute; left: 0; width: 100%; height: 3px; background: #111; border-radius: 30px; transition: .3s; display: inline-block; z-index: 1000;}
+.total_menu {width: 35px; height: 30px; cursor: pointer; top: 5px; transition: 0.2s; line-height: 80px; position: fixed; z-index: 1002;}
+.total_menu .menu_btn {position: relative; top: 30%; transition: .2s; width: 100%; height: 100%;}
+.menu_btn span {position: absolute; left: 0; width: 100%; height: 3px; background: #111; border-radius: 30px; transition: .3s; display: inline-block; z-index: 1001;}
 .menu_btn span:nth-child(1) {top: 0;}
 .menu_btn span:nth-child(2) {top: 50%; transform: translateY(-50%);}
 .menu_btn span:nth-child(3) {bottom: 0;}
-.menu_btn.open_menu span {position: absolute; left: 0; width: 100%; height: 4px; border-radius: 30px; transition: .3s; display: inline-block; z-index: 104;}
-.menu_btn.open_menu span:nth-child(1) {top: 50%; transform: translateY(-50%) rotate(-45deg); z-index: 104;}
+.menu_btn.open_menu span {position: absolute; width: 100%; height: 4px; border-radius: 30px; transition: .3s; display: inline-block; z-index: 1004;}
+.menu_btn.open_menu span:nth-child(1) {top: 50%; transform: translateY(-50%) rotate(-45deg); z-index: 1004;}
 .menu_btn.open_menu span:nth-child(2) {opacity: 0;}
-.menu_btn.open_menu span:nth-child(3) {bottom: 50%; transform: translateY(50%) rotate(45deg); z-index: 104;}
+.menu_btn.open_menu span:nth-child(3) {bottom: 50%; transform: translateY(50%) rotate(45deg); z-index: 1004;}
+#slide_menu{height: 100vh; width:200px; background: rgba(255,0,0,1); position: fixed; z-index: 1000;}
 /* header */
 .header_wrap {max-width: 1800px; margin: 0 auto; position: relative; height: 100px; line-height: 100px;}
 .header_logo {position: absolute; left: 50%; transform: translateX(-50%); transition: .2s;}
@@ -47,26 +47,37 @@ body {font-size: 14px; color: #111;}
 .snb li {height: 20px; line-height: 20px; position: relative; top: 50%; transform: translateY(-50%);}
 
 
+
+                                                                                                                .page_path {height: 10000px;}
 /** contents **/
-/* pord_category */
+/* prod_category */
 .contents {transition: .2s; margin-top: 150px;}
-.pord_category {gap: 20px;}
-.prod_new .prod_new_items {flex-wrap: wrap;}
-.prod_new .prod_new_items li {width: 25%; padding: 15px;}
-.prod_new .prod_new_items li:first-child a { background: url(../images/nyang2.png) no-repeat 60% 0 / cover; width: 100%; height: 0; padding-top: 100%;}
-.prod_new .prod_new_items li:nth-child(2) a { background: url(../images/KO.jpg) no-repeat 0 0 / cover; width: 100%; height: 0; padding-top: 100%;}
-.prod_new .prod_new_items li:nth-child(3) a { background: url(../images/nyang2.jpg) no-repeat 0 20% / cover; width: 100%; height: 0; padding-top: 100%;}
-.prod_new .prod_new_items li:nth-child(4) a { background: url(../images/hamF.jpg) no-repeat 0 0 / cover; width: 100%; height: 0; padding-top: 100%;}
-.prod_new .prod_new_items li:nth-child(5) a { background: url(../images/peng.jpg) no-repeat 0 50% / cover; width: 100%; height: 0; padding-top: 100%;}
-.prod_new .prod_new_items li:nth-child(6) a { background: url(../images/nyang3.jpg) no-repeat 0 20% / cover; width: 100%; height: 0; padding-top: 100%;}
-.prod_new .prod_new_items li:nth-child(7) a { background: url(../images/nyang4.jpg) no-repeat 0 0 / cover; width: 100%; height: 0; padding-top: 100%;}
-.prod_new .prod_new_items li:nth-child(8) a { background: url(../images/peng2.jpg) no-repeat 0 50% / cover; width: 100%; height: 0; padding-top: 100%;}
-.prod_new .prod_new_items li a .prod_name {height: 50px; line-height: 50px;}
+.contents_items ul {flex-wrap: wrap;}
+.contents_items ul li {width: 25%; padding: 15px;}
+.contents_items ul li a {border-radius: 10px; width: 100%; height: 0; padding-top: 100%;}
+.prod_name {height: 50px; line-height: 50px; font-size: 16px;}
+.prod_price {height: 50px; line-height: 50px; font-size: 15px;}
+.prod_category {gap: 20px; font-size: 18px; margin-bottom: 50px;}
+.prod_category a {color: #666;}
+/*new*/
+.prod_new .prod_new_items li .prod_new_item1 { background: url(../images/prod_face1.png) no-repeat 60% 0 / cover;}
+.prod_new .prod_new_items li .prod_new_item2 { background: url(../images/prod_face2.png) no-repeat 60% 0 / cover;}
+/*total*/
+.prod_total {}
+.prod_total .prod_total_items li .prod_total_item1 { background: url(../images/prod_face1.png) no-repeat 60% 0 / cover;}
+.prod_total .prod_total_items li .prod_total_item2 { background: url(../images/prod_face2.png) no-repeat 60% 0 / cover;}
+.prod_total .prod_total_items li .prod_total_item3 { background: url(../images/prod_face3.png) no-repeat 60% 0 / cover;}
+.prod_total .prod_total_items li .prod_total_item4 { background: url(../images/prod_face4.png) no-repeat 60% 0 / cover;}
+.prod_total .prod_total_items li .prod_total_item5 { background: url(../images/prod_face5.png) no-repeat 60% 0 / cover;}
+
 /* detail & buy */
 /* detail */
-.prod_detail {width: 66.666%;}
+.prod_detail {width: 66.666%; margin-bottom: 250px;}
+.detail_image {width: 100%; padding-right: 10px;}
+.detail_review table {width: 100%; padding-right: 10px;}
 /* buy */
-.order_buy.sticky {position: sticky; top: 150px;}
+.guard {position: relative; width: 33.333%;}
+    /* .order_buy.sticky {position: fixed; top: 150px; } */
 .order_buy {width: 400px; padding-left: 10px;}
 .buy_tbl_info .buy_tit {text-align: left;}
 .buy_tbl_info th,td {font-size: 14px;}
@@ -104,11 +115,19 @@ body {font-size: 14px; color: #111;}
 .naver_pay ul li:last-child {width: 10%;}
 .naver_pay ul li:last-child a {width: 100%; height: 100%; padding: 10px; border: 1px solid #c1c1c1; text-align: center;}
 .buy_sub {padding-top: 20px; border-top: 1px solid #d1d1d1; margin-top: 20px;}
+.buy_more {margin-bottom: 10px;}
+.buy_more span {margin-left: 15px; color: #666;}
+.buy_more_select {}
+.buy_sub_image {width: 80px;}
+.sub_item1 {width: 100%;}
+.buy_sub_detail {width: 80%; height: 80px; padding-left: 20px;}
+.buy_sub_detail ul {height: 100%;}
+.buy_sub_detail ul li {height: 30%;}
+.buy_sub_detail ul li:nth-child(3) {padding-top: 10px;}
 .sub_select {width: 100%;}
 
 
-
-
+footer {height: 300px; background: #999; }
 
 /* media */
 @media screen and (max-width: 1850px) {
@@ -117,9 +136,10 @@ body {font-size: 14px; color: #111;}
 
 @media screen and (max-width: 1640px) {
     .contents {padding: 0 20px;}
+    .contents_items {padding: 0 20px;}
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1200px) {
     #header {height: 80px;}
     .total_menu {transform: scale(0.8);}
     .header_wrap {height: 80px; line-height: 80px;}
@@ -129,20 +149,16 @@ body {font-size: 14px; color: #111;}
     .snb li {display: none;}
     .snb .snb_search,.snb .snb_cart {display: block;}
     
-    .contents {margin-top: 130px;}
-    .prod_new .prod_new_items li {width: 33.333%;}
+    .contents {margin-top: 130px; flex-wrap: wrap-reverse;}
+    .prod_detail {width: 100%;}
+    .guard {width: 100%; height: 100%; margin-bottom: 80px;}
+    .order_buy.sticky {position: relative; top: 0;}
+    .order_buy {width: 100%;}
+    .contents_items ul li {width: 33.333%;}
 }
 
 @media screen and (max-width: 767px) {
-    .prod_new .prod_new_items li {width: 50%;}
+    .contents_items ul li {width: 50%;}
 }
 
-
-
-
-/* test/check 확인 후 삭제 */
-
-.prod_total {height: 1000px;}
-
-.sample {background: url(../images/sample.png) no-repeat 0 0 / contain; width: 100%; height: 100%; display: inline-block;}
 
