@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<!-- header : include 예정 -->
  
 <nav class="total_menu">
 	<a href="#none" class="menu_btn">
@@ -17,7 +16,7 @@
 		<div class="flex_end header_wrap">
 
 			<h1 class="header_logo">
-				<a href="https://muzigae-mansion.com/" target="_blank">LOGO</a>
+				<a href="https://muzigae-mansion.com/" target="_blank">LOGO</a>		<!-- 무지개맨션 링크 걸어놨음.. -->
 				<span class="blind">쇼핑몰 로고</span>
 			</h1>
 
