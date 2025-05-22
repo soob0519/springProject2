@@ -10,11 +10,122 @@
 				,PHONE
 				,ADDR
 				,TO_CHAR(PDATE,'YYYY-MM-DD') PDATE
-				,TO_CHAR(PRICE,'FM999,999,999,999') PRICE
+				,PRICE
+				,STATE
 		FROM 
 				DBUY
 		WHERE 
-				USER_ID = 'test1'
+				USER_ID = #{user_id}				
+		ORDER BY 
+				BSEQID DESC
+		
+	</select>	
+	
+	<select id="selectPcDetail" resultType="com.muzigae.dto.DpurchaseDto">
+	SELECT PSEQID
+			,BSEQID
+			,USER_ID
+			,NAME
+			,TO_CHAR(PDATE,'YYYY-MM-DD') PDATE
+			,ITEM
+			,RSEQID
+			,PNAME
+			,COLOR
+			,PRICE
+			,QUAN
+			,STATE
+			,USE
+			,RECODE
+			,TO_CHAR(CDATE,'YYYY-MM-DD') CDATE
+		FROM 
+				DPURCHASE
+		WHERE 
+				BSEQID = #{BSEQID}
 	</select>
-
+	
+	<select id="selectdbuyDetail" resultType="com.muzigae.dto.DbuyDto">
+		SELECT BSEQID
+				,USER_ID
+				,NAME
+				,PHONE
+				,ADDR
+				,TO_CHAR(PDATE,'YYYY-MM-DD') PDATE
+				,PRICE
+				,STATE
+		FROM 
+				DBUY
+		WHERE 
+				BSEQID = #{BSEQID}
+	</select>	
+	
+	<select id="selectDcustomerDetail" resultType="com.muzigae.dto.DcustomerDto">
+		SELECT USER_ID
+				,PASS
+				,NAME
+				,PHONE
+				,ADDR
+				,MAIL
+				,TO_CHAR(RDATE,'YYYY-MM-DD') RDATE
+				,TO_CHAR(SDATE,'YYYY-MM-DD') SDATE
+				,BANK
+				,BNUM
+		FROM 
+				DCUSTOMER
+		WHERE 
+				USER_ID = #{user_id}
+	</select>
+	
+	<select id="selectDpaymentDetail" resultType="com.muzigae.dto.DpaymentDto">
+		SELECT PAYSEQID
+				,BSEQID
+				,USER_ID
+				,PDATE
+				,PRICE
+				,PAYSTATE
+				,PAYMET
+		FROM 
+				DPAYMENT
+		WHERE 
+				BSEQID = #{BSEQID}
+	</select>
+	
+	<select  id="selectBuyList" resultType="Map">
+		SELECT BSEQID
+				,USER_ID
+				,NAME
+				,PHONE
+				,ADDR
+				,TO_CHAR(PDATE,'YYYY-MM-DD') PDATE
+				,PRICE
+				,STATE
+		FROM 
+				DBUY
+		WHERE 
+				USER_ID = #{user_id}
+		AND
+				STATE IN (1, 2)
+		ORDER BY 
+				BSEQID DESC
+	</select>
+	
+	<select  id="selectCancelList" resultType="Map">
+		SELECT BSEQID
+				,USER_ID
+				,NAME
+				,PHONE
+				,ADDR
+				,TO_CHAR(PDATE,'YYYY-MM-DD') PDATE
+				,PRICE
+				,STATE
+		FROM 
+				DBUY
+		WHERE 
+				USER_ID = #{user_id}
+		AND
+				STATE IN (3, 4)
+				
+		ORDER BY 
+				BSEQID DESC
+	</select>
+	
 </mapper>
