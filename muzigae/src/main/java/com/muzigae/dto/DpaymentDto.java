@@ -1,23 +1,21 @@
 package com.muzigae.dto;
 
-import lombok.Data;
-
-@Data
-public class DbuyDto {
+public class DpaymentDto {
+	
+	int payseqid;
 	int bseqid;
 	String user_id;
-	String name;
-	String phone;
-	String addr;
 	String pdate;
 	int price;
-	int state;
+	int paystate;
+	int paymet;
 	
-	public int getState() {
-		return state;
+	
+	public int getPayseqid() {
+		return payseqid;
 	}
-	public void setState(int state) {
-		this.state = state;
+	public void setPayseqid(int payseqid) {
+		this.payseqid = payseqid;
 	}
 	public int getBseqid() {
 		return bseqid;
@@ -31,24 +29,6 @@ public class DbuyDto {
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-	public String getAddr() {
-		return addr;
-	}
-	public void setAddr(String addr) {
-		this.addr = addr;
-	}
 	public String getPdate() {
 		return pdate;
 	}
@@ -61,6 +41,19 @@ public class DbuyDto {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	public int getPaystate() {
+		return paystate;
+	}
+	public void setPaystate(int paystate) {
+		this.paystate = paystate;
+	}
+	public int getPaymet() {
+		return paymet;
+	}
+	public void setPaymet(int paymet) {
+		this.paymet = paymet;
+	}
+	
 	
 	
 }
