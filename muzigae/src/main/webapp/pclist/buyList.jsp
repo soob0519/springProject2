@@ -11,7 +11,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, minimum-scale=1.0, user-scalable=yes" />
-	<title>전체내역목록</title>
+	<title>구매내역목록</title>
 	<link rel="stylesheet" href="css/style.css">
 	<script src="js/jquery-1.10.2.min.js"></script>
 	<script src="js/script.js"></script>
@@ -71,7 +71,7 @@
 
 		<article class="contents wrap">
 			<section>
-				<h2 class="prod_h2">전체내역</h2>
+				<h2 class="prod_h2">구매내역</h2>
 				<div>
 					<ul class="pord_category flex_center">
 						<li><a href="/fullList">전체내역</a></li>
@@ -82,24 +82,22 @@
 			</section>
 
 			<section class="prod_new1 wrap">
-				<h3 class="prod_h3">전체내역</h3>
-				<c:forEach var="full" items="${fullList}">
-					<a href="/pcDetail/${full.BSEQID}">
+				<h3 class="prod_h3">구매내역</h3>
+				<c:forEach var="buy" items="${buyList}">
+					<a href="/pcDetail/${buy.BSEQID}">
 					<ul class="prod_new_items">
 						<li>
 							<div class="list flex_start">
 								<p>
-									<c:if test="${full.STATE == 1}">결제 완료</c:if>
-									<c:if test="${full.STATE == 2}">구매</c:if>
-									<c:if test="${full.STATE == 3}">취소</c:if>
-									<c:if test="${full.STATE == 4}">부분취소</c:if>
+									<c:if test="${buy.STATE == 1}">결제 완료</c:if>
+									<c:if test="${buy.STATE == 2}">구매</c:if>
 								</p>
-								<span>주문번호 ${full.BSEQID}</span>
+								<span>주문번호 ${buy.BSEQID}</span>
 							</div>
 							<div class="list2 flex_start">
 								<img class="prod_image" src="/images/nyang.jpg">
-								<span>구매날짜 ${full.PDATE}</span>
-								<span>총가격 ${full.PRICE}</span>
+								<span>구매날짜 ${buy.PDATE}</span>
+								<span>총가격 ${buy.PRICE}</span>
 							</div>
 						</li>
 					</ul>

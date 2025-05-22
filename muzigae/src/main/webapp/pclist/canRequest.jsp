@@ -103,9 +103,9 @@
 				<h2 class="prod_h2">취소신청</h2>
 				<div>
 					<ul class="pord_category flex_center">
-						<li><a href="#none">전체내역</a></li>
-						<li><a href="#none">구매내역</a></li>
-						<li><a href="#none">취소내역</a></li>
+						<li><a href="/fullList">전체내역</a></li>
+						<li><a href="/buyList">구매내역</a></li>
+						<li><a href="/cancelList">취소내역</a></li>
 					</ul>
 				</div>
 			</section>
