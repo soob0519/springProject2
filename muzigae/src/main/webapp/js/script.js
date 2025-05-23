@@ -9,8 +9,8 @@ $(document).ready(function(){
             $(this).addClass('open_menu')
         }
     });
-    
-
+	
+	
     
     $("#slide_menu").hide();
     $(".menu_btn").click(function(){
@@ -20,31 +20,92 @@ $(document).ready(function(){
 	
 	
 	
-	/**
-	 * 구매수량
-	 */
-	$(".quan_plus").click(function(){
-		let qt = $(this).siblings(".quan");
-		let currentVal = parseInt(qt.val());
+	let unitPrice = productPrice; // 콤마 제거하고 정수 변환
+    let quantity = 1;
+
+    // 금액 및 수량 갱신 함수
+    function updateTotal() {
+        let qty = parseInt($("#quan").val());
+        if (isNaN(qty) || qty < 1) qty = 1;
+
+        quantity = qty;
+        let total = unitPrice * quantity;
+
+        // 금액 콤마 적용
+        const formatted = total.toLocaleString();
+
+        // 금액 및 수량 출력
+        $("#total_price").html(`${formatted}원 <span>(${quantity}개)</span>`);
+        $("#totalPrice").text(formatted);
+        $("#totalCount").text(quantity);
 		
-		if(!isNaN(currentVal)) {
-			qt.val(currentVal + 1);
-		} else {
-			qt.val(1);
-		}
-	});
-	$(".quan_minus").click(function(){
-		let qt = $(this).siblings(".quan");
-		let currentVal = parseInt(qt.val());
-		
-		if(!isNaN(currentVal) && currentVal > 1) {
-			qt.val(currentVal -1);
-		} else {
-			qt.val(1);
-		}
-	});
-	
+		// 수량 옆 개별 금액도 갱신
+		$(".item_price").text(formatted + "원");
+    }
+
+    // 수량 조정 버튼
+    $(".quan_plus").click(function () {
+        let $qt = $(this).siblings(".quan");
+        let currentVal = parseInt($qt.val()) || 1;
+        $qt.val(currentVal + 1);
+        updateTotal();
+    });
+
+    $(".quan_minus").click(function () {
+        let $qt = $(this).siblings(".quan");
+        let currentVal = parseInt($qt.val()) || 1;
+        if (currentVal > 1) {
+            $qt.val(currentVal - 1);
+        } else {
+            $qt.val(1);
+        }
+        updateTotal();
+    });
+
+    // 옵션 선택
+    $("#buy_prod_option").change(function () {
+        let selectColor = $(this).val();
+        if (selectColor !== "") {
+            $(".buy_select_list span").text(selectColor);
+            $(".buy_select_list p:first").text(productName);
+            $(".buy_select_list p:last").text(productPrice);
+
+            $(".buy_select_list").slideDown();
+            $("#quan").val(1);
+            quantity = 0;
+            updateTotal();
+        } else {
+            $(".buy_select_list").slideUp();
+			$("#total_price").html(`0원 <span>(0개)</span>`);
+			$("#totalPrice").text("0");
+			$("#totalCount").text("0");
+        }
+    });
+
+    // 수량 직접 입력 시
+    $("#quan").on("input", function () {
+        updateTotal();
+    });
+
+    // 페이지 로드 시 초기화
+    updateTotal();
+
 });
+
+
+
+
+/*
+function updateTotalPrice() {
+    let unitPrice = parseInt(productPrice.replace(/,/g, "")); // ${dto.price} 를 JS 변수로 받아온 상태
+    let quantity = parseInt($(".quan").val());
+    
+    if (!isNaN(unitPrice) && !isNaN(quantity)) {
+        let total = unitPrice * quantity;
+        $(".buy_total i").html("금액 <span>(" + quantity + "개)</span> : " + total.toLocaleString() + "원");
+    }
+}
+*/
 
 
 
