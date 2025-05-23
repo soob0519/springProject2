@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace는 고유한 이름..중복 불허 -->
+<mapper namespace="com.muzigae.mapper.DprodMapper">
+
+	<select id="selectProdTotalList" resultType="Map">
+		SELECT ITEM
+			  ,RSEQID
+			  ,PNAME
+			  ,COLOR
+			  ,TO_CHAR(PRICE,'9,999,999') AS PRICE 
+			  ,TO_CHAR(RDATE,'YYYY-MM-DD') RDATE 
+			  ,FILE1
+			  ,FILE2
+			  ,FILE3   
+		FROM (  SELECT   ITEM
+				        ,RSEQID
+				        ,PNAME
+				        ,COLOR
+				        ,PRICE
+				        ,RDATE
+				        ,FILE1
+				        ,FILE2
+				        ,FILE3
+				        ,ROW_NUMBER() 
+				  OVER ( PARTITION BY 
+			    					PNAME 
+			    		     ORDER BY 
+			    		   	  	    RSEQID DESC ) 
+				    AS 
+				    	rn 
+		      		FROM 
+		      			DPROD )
+	      WHERE
+	    	 rn = 1
+	   ORDER BY     
+	   		 PNAME ASC
+	</select>
+
+	<select id="selectProdLipList" resultType="Map">
+		SELECT ITEM
+			  ,RSEQID
+			  ,PNAME
+			  ,COLOR
+			  ,TO_CHAR(PRICE,'9,999,999') AS PRICE 
+			  ,TO_CHAR(RDATE,'YYYY-MM-DD') RDATE 
+			  ,FILE1
+			  ,FILE2
+			  ,FILE3   
+		FROM (  SELECT   ITEM
+				        ,RSEQID
+				        ,PNAME
+				        ,COLOR
+				        ,PRICE
+				        ,RDATE
+				        ,FILE1
+				        ,FILE2
+				        ,FILE3
+				        ,ROW_NUMBER() 
+				  OVER ( PARTITION BY 
+			    					PNAME 
+			    		     ORDER BY 
+			    		   	  	    RSEQID DESC ) 
+				    AS 
+				    	rn 
+		      		FROM 
+		      			DPROD
+		      		WHERE
+		      			ITEM='lip' )
+	      WHERE
+	    	 rn = 1
+	   ORDER BY     
+	   		 PNAME ASC
+	</select>
+
+	<select id="selectProdEyeList" resultType="Map">
+		SELECT ITEM
+			  ,RSEQID
+			  ,PNAME
+			  ,COLOR
+			  ,TO_CHAR(PRICE,'9,999,999') AS PRICE 
+			  ,TO_CHAR(RDATE,'YYYY-MM-DD') RDATE 
+			  ,FILE1
+			  ,FILE2
+			  ,FILE3   
+		FROM (  SELECT   ITEM
+				        ,RSEQID
+				        ,PNAME
+				        ,COLOR
+				        ,PRICE
+				        ,RDATE
+				        ,FILE1
+				        ,FILE2
+				        ,FILE3
+				        ,ROW_NUMBER() 
+				  OVER ( PARTITION BY 
+			    					PNAME 
+			    		     ORDER BY 
+			    		   	  	    RSEQID DESC ) 
+				    AS 
+				    	rn 
+		      		FROM 
+		      			DPROD
+		      		WHERE
+		      			ITEM='eye' )
+	      WHERE
+	    	 rn = 1
+	   ORDER BY     
+	   		 PNAME ASC
+	</select>
+
+	<select id="selectProdFaceList" resultType="Map">
+		SELECT ITEM
+			  ,RSEQID
+			  ,PNAME
+			  ,COLOR
+			  ,TO_CHAR(PRICE,'9,999,999') AS PRICE 
+			  ,TO_CHAR(RDATE,'YYYY-MM-DD') RDATE 
+			  ,FILE1
+			  ,FILE2
+			  ,FILE3   
+		FROM (  SELECT   ITEM
+				        ,RSEQID
+				        ,PNAME
+				        ,COLOR
+				        ,PRICE
+				        ,RDATE
+				        ,FILE1
+				        ,FILE2
+				        ,FILE3
+				        ,ROW_NUMBER() 
+				  OVER ( PARTITION BY 
+			    					PNAME 
+			    		     ORDER BY 
+			    		   	  	    RSEQID DESC ) 
+				    AS 
+				    	rn 
+		      		FROM 
+		      			DPROD
+		      		WHERE
+		      			ITEM='face' )
+	      WHERE
+	    	 rn = 1
+	   ORDER BY     
+	   		 PNAME ASC
+	</select>
+	
+
+
+	<select id="selectProdDetail" resultType="DprodDto">
+		SELECT   ITEM
+				,RSEQID
+				,PNAME
+				,COLOR
+				,PRICE
+				,QUAN
+				,TO_CHAR(RDATE,'YYYY-MM-DD') RDATE
+				,FILE1
+				,FILE2
+				,FILE3
+			FROM
+				DPROD
+			WHERE
+				RSEQID = #{rseqid}
+	</select>
+
+
+	<select id="selectProdColor" resultType="String">
+		SELECT DISTINCT COLOR
+			FROM
+				DPROD
+			WHERE
+				PNAME = #{pname}
+			ORDER BY
+				COLOR
+	</select>
+	
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
