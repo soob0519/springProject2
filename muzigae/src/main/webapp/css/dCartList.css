@@ -1,0 +1,57 @@
+body {
+	font-family: Arial, sans-serif;
+	background: #f4f4f4;
+	padding: 20px;
+}
+
+h1 {
+	text-align: center;
+	color: #1e1b52;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	background: white;
+	margin-top: 20px;
+}
+
+th, td {
+	padding: 12px;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+}
+
+th {
+	background-color: #1e1b52;
+	color: white;
+}
+
+input[type="number"] {
+	width: 60px;
+}
+
+.total-container {
+	text-align: right;
+	margin-top: 20px;
+	font-size: 1.2em;
+	color: #333;
+}
+
+button {
+	background: #1e1b52;
+	color: white;
+	border: none;
+	padding: 8px 12px;
+	cursor: pointer;
+}
+
+button:hover {
+	background: #3c397d;
+}
+
+.checkout {
+	float: right;
+	margin-top: 10px;
+	font-size: 1rem;
+}
