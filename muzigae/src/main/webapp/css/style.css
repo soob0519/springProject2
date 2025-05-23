@@ -58,7 +58,6 @@ body {font-size: 14px; color: #111;}
 .page_path ul li:last-child::after {display: none;}
 
 
-
 /** contents **/
 /* prod_category */
 .contents {transition: .2s; margin-top: 150px;}
@@ -103,9 +102,10 @@ body {font-size: 14px; color: #111;}
 .buy_main {margin-top: 20px;}
 .buy_total {margin: 10px 0;}
 .buy_total {}
+.total_price {font-size: 310px;}
 .buy_total i span {font-size: 12px;}
 .buy_prod_option {width: 100%; margin: 10px 0; padding: 10px 5px;}
-.buy_select_list {padding: 20px 0; border-bottom: 1px solid #d1d1d1;}
+.buy_select_list {padding: 20px 0; border-bottom: 1px solid #d1d1d1; display: none;}
 .buy_select_list ul {align-items: center;}
 .buy_select_list ul li {width: 33.333%;}
 .buy_select_list ul li:first-child span {color: #666;}
@@ -149,8 +149,8 @@ body {font-size: 14px; color: #111;}
 .sub_select {width: 100%;}
 
 
-footer {height: 300px; background: #3b3b3b;}
 
+footer {height: 300px; background: #3b3b3b; position: relative; left: 0; bottom: 0; right: 0;}
 
 
 
