@@ -18,6 +18,8 @@ public interface PclistMapper {
 
 	DbuyDto selectdbuyDetail(int bseqid);
 
+	int updateAddr(String newAddr, int bseqid);
+	
 	DcustomerDto selectDcustomerDetail(String user_id);
 
 	DpaymentDto selectDpaymentDetail(int bseqid);
@@ -25,6 +27,11 @@ public interface PclistMapper {
 	List<?> selectBuyList(DbuyDto dto);
 
 	List<?> selectCancelList(DbuyDto dto);
+
+	int cancelEach(String datas, int recode);
+
+	int updateDbuyCancel(int bseqid);
+
 
 
 }
