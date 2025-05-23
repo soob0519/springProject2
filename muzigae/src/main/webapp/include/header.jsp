@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% 
- String session_userid = (String)session.getAttribute("SESSION_USERID"); 
- %>
+
  
 <nav class="total_menu">
 	<a href="#none" class="menu_btn">
@@ -23,38 +21,17 @@
 			</h1>
 
 			<ul class="snb flex_end">
-			<%
-			 if(   session_userid == null 
-			    || session_userid.equals("")
-			    || session_userid.equals("null") ) 
-			 {
-			 %>
 				<li class="snb_login">
-					<a href="#none">로그인</a>
+					<a href="/dlogin1">로그인</a>
 				</li>
 				<li class="snb_join">
-					<a href="#none">회원가입</a>
+					<a href="/dmemberWrite">회원가입</a>
 				</li>
-			<%
-			 } else {
-			%>
-			    <li>
-					<a href="#none">구매내역</a>
-				</li>
-				<li>
-					<a href="#none">회원정보수정</a>
-				</li>
-			    <li>
-			    	<a href="javascript:fn_logout();">로그아웃</a>
-			    </li>
-			<%
-			 }
-			%>
 				<li class="snb_dibs">
-					<a href="#none"><i class="fa-regular fa-heart"></i></a>
+					<a href="#"><i class="fa-regular fa-heart"></i></a>
 				</li>
 				<li class="snb_cart">
-					<a href="#none"><i class="fa-solid fa-cart-shopping"></i></a>
+					<a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
 				</li>
 			</ul>
 		</div>
@@ -81,16 +58,16 @@
 			</ol>
 		</li>
 		<li>
-			<h2><a href="#none" class="sld_mn_tit">SHOP</a></h2>
+			<h2><a href="/prodTotalList" class="sld_mn_tit">SHOP</a></h2>
 			<ol class="flex_between">
 				<li>
-					<a href="#none" class="sld_mn_subtit">LIP</a>
+					<a href="/prodLipList" class="sld_mn_subtit">LIP</a>
 				</li>
 				<li>
-					<a href="#none" class="sld_mn_subtit">EYE</a>
+					<a href="/prodEyeList" class="sld_mn_subtit">EYE</a>
 				</li>
 				<li>
-					<a href="#none" class="sld_mn_subtit">FACE</a>
+					<a href="/prodFaceList" class="sld_mn_subtit">FACE</a>
 				</li>
 			</ol>
 		</li>
