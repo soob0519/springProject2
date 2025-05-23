@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<% 
+ String session_userid = (String)session.getAttribute("SESSION_USERID"); 
+ %>
  
 <nav class="total_menu">
 	<a href="#none" class="menu_btn">
@@ -21,12 +23,33 @@
 			</h1>
 
 			<ul class="snb flex_end">
+			<%
+			 if(   session_userid == null 
+			    || session_userid.equals("")
+			    || session_userid.equals("null") ) 
+			 {
+			 %>
 				<li class="snb_login">
 					<a href="#none">로그인</a>
 				</li>
 				<li class="snb_join">
 					<a href="#none">회원가입</a>
 				</li>
+			<%
+			 } else {
+			%>
+			    <li>
+					<a href="#none">구매내역</a>
+				</li>
+				<li>
+					<a href="#none">회원정보수정</a>
+				</li>
+			    <li>
+			    	<a href="javascript:fn_logout();">로그아웃</a>
+			    </li>
+			<%
+			 }
+			%>
 				<li class="snb_dibs">
 					<a href="#none"><i class="fa-regular fa-heart"></i></a>
 				</li>
