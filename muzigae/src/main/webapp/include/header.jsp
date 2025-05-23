@@ -11,7 +11,7 @@
 	<a href="#none"><span class="blind">전체메뉴버튼</span></a>
 </nav>
 <header id="header">
-	<div class="header">
+	<div class="header main">
 
 		<div class="flex_end header_wrap">
 
@@ -26,9 +26,6 @@
 				</li>
 				<li class="snb_join">
 					<a href="#none">회원가입</a>
-				</li>
-				<li class="snb_search">
-					<a href="#none"><i class="fa-solid fa-magnifying-glass"></i></a>
 				</li>
 				<li class="snb_dibs">
 					<a href="#none"><i class="fa-regular fa-heart"></i></a>

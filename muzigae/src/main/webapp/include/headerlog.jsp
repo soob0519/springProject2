@@ -30,9 +30,6 @@
 			    <li>
 			    	<a href="javascript:fn_logout();">로그아웃</a>
 			    </li>
-				<li class="snb_search">
-					<a href="#none"><i class="fa-solid fa-magnifying-glass"></i></a>
-				</li>
 				<li class="snb_dibs">
 					<a href="#none"><i class="fa-regular fa-heart"></i></a>
 				</li>
