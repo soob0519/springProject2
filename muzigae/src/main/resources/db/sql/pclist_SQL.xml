@@ -21,7 +21,7 @@
 		
 	</select>	
 	
-	<select id="selectPcDetail" resultType="com.muzigae.dto.DpurchaseDto">
+	<select id="selectPcDetail" resultType="dpurchaseDto">
 	SELECT PSEQID
 			,BSEQID
 			,USER_ID
@@ -43,7 +43,7 @@
 				BSEQID = #{BSEQID}
 	</select>
 	
-	<select id="selectdbuyDetail" resultType="com.muzigae.dto.DbuyDto">
+	<select id="selectdbuyDetail" resultType="dbuyDto">
 		SELECT BSEQID
 				,USER_ID
 				,NAME
@@ -58,7 +58,7 @@
 				BSEQID = #{BSEQID}
 	</select>	
 	
-	<select id="selectDcustomerDetail" resultType="com.muzigae.dto.DcustomerDto">
+	<select id="selectDcustomerDetail" resultType="dcustomerDto">
 		SELECT USER_ID
 				,PASS
 				,NAME
@@ -75,7 +75,7 @@
 				USER_ID = #{user_id}
 	</select>
 	
-	<select id="selectDpaymentDetail" resultType="com.muzigae.dto.DpaymentDto">
+	<select id="selectDpaymentDetail" resultType="dpaymentDto">
 		SELECT PAYSEQID
 				,BSEQID
 				,USER_ID
@@ -122,10 +122,45 @@
 		WHERE 
 				USER_ID = #{user_id}
 		AND
-				STATE IN (3, 4)
+				STATE IN (3, 4, 5)
 				
 		ORDER BY 
 				BSEQID DESC
 	</select>
+	
+	<update id="cancelEach">
+		UPDATE 
+				DPURCHASE
+		SET 
+				USE = 'X'
+				,STATE = '5'
+   				,RECODE = '${recode}'
+   				,CDATE = sysdate
+		WHERE 
+				PSEQID IN (${datas})
+	</update>
+	
+	<update id="updateDbuyCancel">
+		
+		UPDATE 
+				DBUY
+		SET 
+				STATE = '5'
+		WHERE 
+				BSEQID = #{bseqid}
+		
+	</update>
+	
+	<update id="updateAddr">
+		
+		UPDATE 
+				DBUY
+		SET 
+				ADDR = #{newAddr}
+		WHERE 
+				BSEQID = #{bseqid}
+		
+	</update>
+	
 	
 </mapper>
