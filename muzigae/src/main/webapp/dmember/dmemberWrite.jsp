@@ -27,10 +27,10 @@
 			
 			$("#useridBox").val("N");
 			
-			if(len > 12) { // 13
-				 id = id.substring(0,12);
+			if(len > 16) { // 16
+				 id = id.substring(0,16);
 				 $("#user_id").val(id);
-				 len = 12;
+				 len = 16;
 			}
 			
 			if( len <= 4 || len >= 16 ) {
@@ -39,6 +39,7 @@
 				// 중복체크 - ajax로 세팅
 				let sendData = "user_id="+id;
 				let sendUrl  = "/useridCheck";
+				
 				
 				let data = fn_ajax(sendUrl,sendData);
 				
@@ -60,7 +61,7 @@
 			let pass = $.trim($("#pass").val());
 			let pass1 = $.trim($("#pass1").val());
 			let msg = "";
-			if( pass != pass1 ) msg = "비밀번호가 일치하지 않습니다.";
+			if( pass != pass1 ) msg = "<font color='red'>비밀번호가 일치하지 않습니다.</font>";
 			else msg = "";
 			
 			$("#text_pass").html(msg);
@@ -102,8 +103,8 @@
 	    	
 	    	$.ajax({
     			type : "post",
-    			url  : sendUrl,
-    			data : sendData,
+    			url  : "/dmemberInsert",
+    			data : form,
     			dataType : "text",
     			async : false,    // 비동기 방식을 동기로 바꿈
     			success  : function(data){
@@ -112,6 +113,29 @@
     			error    : function(){ msg = "4"; }
     		});
 	    	
+	    	let form = new FormData(document.getElementById("goodsFrm"));
+			//let form = $("#goodsFrm").serialize();
+			$.ajax({
+				type : "post",
+				url  : "/goodsInput",
+				data : form,
+				
+				processData: false, // 전송데이터의 인식을 위한 세팅
+				contentType: false, // 전송데이터의 인식을 위한 세팅
+				
+				dataType : "text",
+				success  : function(data){
+					if(data == "ok") {
+						alert("저장완료");
+						location = "/goodsAdminList";
+					} else {
+						alert("저장실패");
+					}
+				},
+				error    : function(){
+					alert("오류발생!!");
+				}
+			});
 	    });
 	} );
 	</script>
@@ -163,9 +187,9 @@
 		<tr>
 			<td style="background-color: #e7e7e7;">아이디*</td>
 			<td>
-				<input type="text" id="userid" name="userid" class="input1">
-				<span style="font-size:12px; margin-left:10px;"> 영문소문자/숫자(4~16자)</span>
-				<span id="text_userid"></span>
+				<input type="text" id="user_id" name="user_id" class="input1">
+				<span style="font-size:12px; margin-left:10px;"> 영문소문자/숫자(4~16자)</span> <br>
+				 &nbsp;&nbsp; <span id="text_userid"></span>
 			</td>
 		</tr>
 		
@@ -180,8 +204,8 @@
 		<tr>
 			<td style="background-color: #e7e7e7;">비밀번호 확인*</td>
 			<td>
-				<input type="password" id="pass1" name="pass1" class="input1">
-				<span id="text_pass"></span>
+				<input type="password" id="pass1" name="pass1" class="input1"> <br>
+				 &nbsp;&nbsp; <span id="text_pass"></span>
 			</td>
 		</tr>
 		

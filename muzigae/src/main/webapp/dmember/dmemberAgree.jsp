@@ -10,23 +10,21 @@
 		<meta charset="UTF-8">
 		<title>회원 등록 화면</title>
 		<link rel="stylesheet" href="../css/style.css" />
-		<link rel="stylesheet" href="../css/jquery-ui.css">
 	  	<script src="../js/jquery-3.7.1.js"></script>
-	  	<script src="../js/jquery-ui.js"></script>
 	</head>
 	
  <script>
 	$(function(){
 		 $("#btn_submit").click(function(){
-			 if( $("input[name='chk']:checked").length == 0 ) {
-					alert("약관에 동의해주세요.");
-					return false;
+			 
+			let len = $("input[name='chk']:checked").length;  // 요소 전체 개수
+			
+			if( len == 0 ) {
+				alert("약관에 동의해주세요.");
+				return false;
 			}
 			
-			let len = $("input[name='chk']:checked").length;  // 요소 전체 개수
-
 			if( len == 1 ) {
-				alert("약관 동의");
 				location = "dmemberWrite";
 			}
 		 });
@@ -88,7 +86,7 @@
 
  <div class="div_button_area" style="margin-left:50px;">
     <button type="button" class="button3" style="margin-right:-90px;" >취소</button>
-    <button type="submit" id="btn_submit" class="button2" onClick="return false;">다음</button>
+    <button type="button" id="btn_submit" class="button2" onClick="return false;">다음</button>
  </div>
  
 </form>

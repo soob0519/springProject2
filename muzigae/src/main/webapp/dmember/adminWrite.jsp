@@ -16,23 +16,6 @@
  </head>
  
 	<script>
-	<script>
-	function fn_ajax(sendUrl,sendData) {
-		var msg = "";
-		$.ajax({
-			type : "post",
-			url  : sendUrl,
-			data : sendData,
-			dataType : "text",
-			async : false,    // 비동기 방식을 동기로 바꿈
-			success  : function(data){
-				msg = data;
-			},
-			error    : function(){ msg = "4"; }
-		});
-		return msg;
-	}	
-	
 	$( function() {
 		$("#text_userid").html("<font color='red'>아이디를 입력해주세요.</font>");
 		
@@ -98,7 +81,35 @@
 				$("#mail").focus();
 			}	
 	    	
-	    }	
+	    	let sendData = $("#frm").serialize();
+	    	let sendUrl = "/memberInsert";
+
+	    	let result = fn_ajax(sendUrl,sendData);
+	    	if( result == "1" ) {
+	    		alert("저장완료!!");
+	    		location = "/dloginWrite";
+	    	} else if( result == "2" ) {
+	    		alert("이미 사용중인 아이디입니다.");
+	    	} else if( result == "3" ) {
+	    		alert("저장실패!!");
+	    	} else {
+	    		alert("오류!! \n관리자에게 연락바랍니다. (02-7777-5555)");
+	    	}
+	    	
+	    	
+	    	let form = new FormData(document.getElementById("dmemberFrm"));
+	    	
+	    	$.ajax({
+    			type : "post",
+    			url  : sendUrl,
+    			data : sendData,
+    			dataType : "text",
+    			async : false,    // 비동기 방식을 동기로 바꿈
+    			success  : function(data){
+    				msg = data;
+    			},
+    			error    : function(){ msg = "4"; }
+    		});
 	    	
 	    });
 	} );
@@ -149,11 +160,11 @@
 		
 		
 		<tr>
-			<td style="background-color: #e7e7e7;">아이디*</td>
+			<td style="background-color: #e7e7e7;"><label for="user_id">아이디*</label></td>
 			<td>
-				<input type="text" id="userid" name="userid" class="input1">
-				<span style="font-size:12px; margin-left:10px;"> 영문소문자/숫자(4~16자)</span>
-				<span id="text_userid"></span>
+				<input type="text" id="user_id" name="user_id" class="input1">
+				<span style="font-size:12px; margin-left:10px;"> 영문소문자/숫자(4~16자)</span> <br>
+				 &nbsp;&nbsp; <span id="text_userid"></span>
 			</td>
 		</tr>
 		
@@ -168,8 +179,8 @@
 		<tr>
 			<td style="background-color: #e7e7e7;">비밀번호 확인*</td>
 			<td>
-				<input type="password" id="pass1" name="pass1" class="input1">
-				<span id="text_pass"></span>
+				<input type="password" id="pass1" name="pass1" class="input1"><br>
+				 &nbsp;&nbsp; <span id="text_pass"></span>
 			</td>
 		</tr>
 		

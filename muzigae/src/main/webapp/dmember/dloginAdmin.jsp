@@ -7,9 +7,7 @@
 	<meta charset="UTF-8">
 	<title>로그인 화면</title>
 	<link rel="stylesheet" href="../css/style.css" />
-	<link rel="stylesheet" href="../css/jquery-ui.css">
   	<script src="../js/jquery-3.7.1.js"></script>
-  	<script src="../js/jquery-ui.js"></script>
 
   	<script>
  	$( function() {
@@ -30,7 +28,7 @@
    			let form = $("#frm").serialize();  // serialize() : 폼을 인식하는 함수
    			$.ajax({
 				type:"post",		// 전송 타입
-				url:"/loginConfirm",// 전송 장소
+				url:"/loginConfirm2",// 전송 장소
 				data:form,   		// 전송 데이터
 				datatype:"text", 	// 받는 데이터 타입
    				success:function(data) {  
@@ -42,7 +40,7 @@
 					} 
    				},
    				error:function(){	
-					alert("전송 실패!");
+					alert("로그인 실패!");
    				}
    			});
    		});

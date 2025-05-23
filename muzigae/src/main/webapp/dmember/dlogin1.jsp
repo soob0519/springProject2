@@ -30,7 +30,7 @@
    			let form = $("#frm").serialize();  // serialize() : 폼을 인식하는 함수
    			$.ajax({
 				type:"post",		// 전송 타입
-				url:"/loginConfirm",// 전송 장소
+				url:"/loginConfirm1",// 전송 장소
 				data:form,   		// 전송 데이터
 				datatype:"text", 	// 받는 데이터 타입
    				success:function(data) {  
@@ -42,7 +42,7 @@
 					} 
    				},
    				error:function(){	
-					alert("전송 실패!");
+					alert("로그인 실패!");
    				}
    			});
    		});
