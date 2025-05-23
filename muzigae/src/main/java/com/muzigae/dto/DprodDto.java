@@ -1,6 +1,10 @@
 package com.muzigae.dto;
 
+import lombok.Data;
+
+@Data
 public class DprodDto {
+
 	String item;
 	int rseqid;
 	String pname;
@@ -11,6 +15,26 @@ public class DprodDto {
 	String file2;
 	String file3;
 	
+	
+	
+	public String getFile1() {
+		return file1;
+	}
+	public void setFile1(String file1) {
+		this.file1 = file1;
+	}
+	public String getFile2() {
+		return file2;
+	}
+	public void setFile2(String file2) {
+		this.file2 = file2;
+	}
+	public String getFile3() {
+		return file3;
+	}
+	public void setFile3(String file3) {
+		this.file3 = file3;
+	}
 	public String getItem() {
 		return item;
 	}
@@ -35,8 +59,8 @@ public class DprodDto {
 	public void setColor(String color) {
 		this.color = color;
 	}
-	public int getPrice() {
-		return price;
+	public String getPrice() {
+		return String.format("%,d", price); // "1,234,567"
 	}
 	public void setPrice(int price) {
 		this.price = price;
@@ -47,24 +71,16 @@ public class DprodDto {
 	public void setRdate(String rdate) {
 		this.rdate = rdate;
 	}
-	public String getFile1() {
-		return file1;
-	}
-	public void setFile1(String file1) {
-		this.file1 = file1;
-	}
-	public String getFile2() {
-		return file2;
-	}
-	public void setFile2(String file2) {
-		this.file2 = file2;
-	}
-	public String getFile3() {
-		return file3;
-	}
-	public void setFile3(String file3) {
-		this.file3 = file3;
-	}
+
 	
+	
+	// 계산용
+	public int getRawPrice() {
+	    return price;
+	}
+	// 출력용
+	public String getFormattedPrice() {
+	    return String.format("%,d", price);
+	}
 	
 }
