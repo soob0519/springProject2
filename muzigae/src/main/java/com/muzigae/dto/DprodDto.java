@@ -6,7 +6,6 @@ public class DprodDto {
 	String pname;
 	String color;
 	int price;
-	int quan;
 	String rdate;
 	String file1;
 	String file2;
@@ -41,12 +40,6 @@ public class DprodDto {
 	}
 	public void setPrice(int price) {
 		this.price = price;
-	}
-	public int getQuan() {
-		return quan;
-	}
-	public void setQuan(int quan) {
-		this.quan = quan;
 	}
 	public String getRdate() {
 		return rdate;
