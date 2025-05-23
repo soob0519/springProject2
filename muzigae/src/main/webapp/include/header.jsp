@@ -11,7 +11,7 @@
 	<a href="#none"><span class="blind">전체메뉴버튼</span></a>
 </nav>
 <header id="header">
-	<div class="header main">
+	<div class="header">
 
 		<div class="flex_end header_wrap">
 
@@ -58,22 +58,16 @@
 			</ol>
 		</li>
 		<li>
-			<h2><a href="#none" class="sld_mn_tit">입력해</a></h2>
+			<h2><a href="#none" class="sld_mn_tit">SHOP</a></h2>
 			<ol class="flex_between">
 				<li>
-					<a href="#none" class="sld_mn_subtit">2-1</a>
+					<a href="#none" class="sld_mn_subtit">LIP</a>
 				</li>
 				<li>
-					<a href="#none" class="sld_mn_subtit">2-2</a>
+					<a href="#none" class="sld_mn_subtit">EYE</a>
 				</li>
 				<li>
-					<a href="#none" class="sld_mn_subtit">2-3</a>
-				</li>
-				<li>
-					<a href="#none" class="sld_mn_subtit">2-4</a>
-				</li>
-				<li>
-					<a href="#none" class="sld_mn_subtit">2-5</a>
+					<a href="#none" class="sld_mn_subtit">FACE</a>
 				</li>
 			</ol>
 		</li>

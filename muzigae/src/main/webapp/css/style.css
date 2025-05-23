@@ -105,8 +105,17 @@ body {font-size: 14px; color: #111;}
 .buy_total {}
 .buy_total i span {font-size: 12px;}
 .buy_prod_option {width: 100%; margin: 10px 0; padding: 10px 5px;}
+.buy_select_list {padding: 20px 0; border-bottom: 1px solid #d1d1d1;}
+.buy_select_list ul {align-items: center;}
+.buy_select_list ul li {width: 33.333%;}
+.buy_select_list ul li:first-child span {color: #666;}
+.buy_select_list ul li:nth-child(2) a,i {cursor: pointer; font-size: 22px; text-align: center;}
+.buy_select_list ul li:nth-child(2) a {width: 35px; height: 35px; border: 1px solid #333;}
+.buy_select_list ul li:nth-child(2) i {margin-left: 10px; font-size: 20px; color: #666;}
+.buy_select_list ul li:nth-child(2) input {width: 50px; height: 35px; text-align: center;}
+.buy_select_list ul li:last-child {text-align: right;}
 .buy_btn_area {gap: 5px;}
-.buy_btn_area li a {width: 100%; text-align: center; padding: 15px 0; border: 1px solid #c1c1c1;}
+.buy_btn_area li a {width: 100%; text-align: center; padding: 15px 0; border: 1px solid #c1c1c1; height: 100%;}
 .buy_btn_area li:first-child {width: 80%; background: #111;}
 .buy_btn_area li:first-child a {color: #fff; font-size: 14px;}
 .buy_btn_area li:nth-child(2) {width: 15%;}
@@ -140,7 +149,7 @@ body {font-size: 14px; color: #111;}
 .sub_select {width: 100%;}
 
 
-footer {height: 300px; background: #999;}
+footer {height: 300px; background: #3b3b3b;}
 
 
 

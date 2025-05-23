@@ -69,13 +69,13 @@
 				<h3 class="prod_h3">신상품</h3>
 				<ul class="prod_new_items flex_start">
 					<!-- 신상품 : 업로드(RDATE) 기준 일정 기간동안 떠 있게... -->
-					<c:forEach var="liNew" items="${resultList }">
+					<c:forEach var="li_new" items="${resultList }">
 					<li>
-						<a href="/prodDetail/${liNew.RSEQID }" class="prod_new_item1">
-							<img src="../images/prod_thumbnail/${liNew.FILENAME }">
+						<a href="/prodDetail/${li_new.RSEQID }" class="prod_new_item1">
+							<img src="../images/prod_thumbnail/${li_new.FILE1 }">
 							<div class="flex_between">
-								<span class="prod_name">${liNew.PNAME }</span>
-								<span class="prod_price">${liNew.PRICE }</span>
+								<span class="prod_name">${li_new.PNAME }</span>
+								<span class="prod_price">${li_new.PRICE }</span>
 							</div>
 						</a>
 					</li>
@@ -87,13 +87,13 @@
 				<h3 class="prod_h3">전체상품</h3>
 				<ul class="prod_total_items flex_start">
 					<!-- 전체상품 : 모든 상품 리스트.. -->
-					<c:forEach var="liTot" items="${resultList }">
+					<c:forEach var="li_tot" items="${resultList }">
 					<li>
-						<a href="/prodDetail/${liTot.RSEQID }" class="prod_total_item1">
-							<img src="../images/prod_thumbnail/${liTot.FILENAME }">
+						<a href="/prodDetail/${li_tot.RSEQID }" class="prod_total_item1">
+							<img src="../images/prod_thumbnail/${li_tot.FILE1 }">
 							<div class="flex_between">
-								<span class="prod_name">${liTot.PNAME }</span>
-								<span class="prod_price">${liTot.PRICE }</span>
+								<span class="prod_name">${li_tot.PNAME }</span>
+								<span class="prod_price">${li_tot.PRICE }</span>
 							</div>
 						</a>
 					</li>

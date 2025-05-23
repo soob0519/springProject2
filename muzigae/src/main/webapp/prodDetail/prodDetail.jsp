@@ -28,6 +28,7 @@
 	
 		<!-- header -->
 		<%@ include file="../include/header.jsp" %>
+		
 		<!-- 페이지 이동시 갱신되는 방식 -->
 		<div class="page_path wrap">
 			<ul class="flex_end">
@@ -52,7 +53,7 @@
 			<!-- 상세페이지 -->
 			<article class="prod_detail">
 				<section>
-					<img src="../images/prod_detail/${dto.filepath}" alt="detail_image" class="detail_image">
+					<img src="../images/prod_detail/${dto.file2}" alt="detail_image" class="detail_image">
 				</section>
 
 				<section class="detail_review">
@@ -198,17 +199,39 @@
 							</tr>
 						</table>
 					</section>
-					<!-- 구매옵션 -->
+					
+					<!-- 구매옵션 선택 시작 -->
 					<section>
 						<div class="buy_main">
 							<h5 class="prod_h5">옵션명</h5>
 
 							<select name="buy_prod_option" id="buy_prod_option" class="buy_prod_option">
 								<option value="">[필수] 옵션 선택</option>
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-							</select>
+								
+								<!-- 반복문으로 데이터 불러오는데.. 제품이름이 같은것만 가져오기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+								<option value="${dto.rseqid} }">${dto.color}</option>
+								<option value="${dto.rseqid} }">${dto.color}</option>
+							</select>			
+							
+							<div class="buy_select_list">
+								<ul class="flex_between">
+									<li>
+										<p>${dto.pname}</p>
+										<span>${dto.color}</span>
+									</li>
+									<li class="flex_center">
+										<a href="#none" class="quan_minus">-</a>
+										<input type="text" class="quan" id="quan" value="1"/>
+										<a href="#none" class="quan_plus">+</a>
+										<i id="btn_cancle">x</i>
+									</li>
+									<li>
+										<p>${dto.price }</p>
+									</li>
+								</ul>
+							</div>
+						<!-- 구매옵션 선택 끝 -->
+
 
 							<div class="flex_between buy_total">
 								<p>TOTAL</p>

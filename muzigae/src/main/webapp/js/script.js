@@ -12,16 +12,43 @@ $(document).ready(function(){
     
 
     
-    $(document).ready(function(){
-        $("#slide_menu").hide();
-        $(".menu_btn").click(function(){
-            $(".siteMapBtn p").toggle();
-            $('#slide_menu').animate({width:'toggle'});
-        })
+    $("#slide_menu").hide();
+    $(".menu_btn").click(function(){
+        $(".siteMapBtn p").toggle();
+        $('#slide_menu').animate({width:'toggle'});
     })
-
-
+	
+	
+	
+	/**
+	 * 구매수량
+	 */
+	$(".quan_plus").click(function(){
+		let qt = $(this).siblings(".quan");
+		let currentVal = parseInt(qt.val());
+		
+		if(!isNaN(currentVal)) {
+			qt.val(currentVal + 1);
+		} else {
+			qt.val(1);
+		}
+	});
+	$(".quan_minus").click(function(){
+		let qt = $(this).siblings(".quan");
+		let currentVal = parseInt(qt.val());
+		
+		if(!isNaN(currentVal) && currentVal > 1) {
+			qt.val(currentVal -1);
+		} else {
+			qt.val(1);
+		}
+	});
+	
 });
+
+
+
+
 
 $(window).on('load', function() {
     const $fixedBox = $('.order_buy'); // 고정될 박스 요소
