@@ -13,8 +13,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, minimum-scale=1.0, user-scalable=yes" />
 	<title>구매내역목록</title>
 	<link rel="stylesheet" href="css/style.css">
-	<script src="js/jquery-1.10.2.min.js"></script>
-	<script src="js/script.js"></script>
+	<script src="/js/jquery-1.10.2.min.js"></script>
+	<script src="/js/script.js"></script>
 </head>
 
 <script>

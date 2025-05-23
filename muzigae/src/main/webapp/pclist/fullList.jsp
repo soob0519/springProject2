@@ -13,8 +13,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, minimum-scale=1.0, user-scalable=yes" />
 	<title>전체내역목록</title>
 	<link rel="stylesheet" href="css/style.css">
-	<script src="js/jquery-1.10.2.min.js"></script>
-	<script src="js/script.js"></script>
+	<script src="/js/jquery-1.10.2.min.js"></script>
+	<script src="/js/script.js"></script>
 </head>
 
 <script>
@@ -93,6 +93,7 @@
 									<c:if test="${full.STATE == 2}">구매</c:if>
 									<c:if test="${full.STATE == 3}">취소</c:if>
 									<c:if test="${full.STATE == 4}">부분취소</c:if>
+									<c:if test="${full.STATE == 5}">취소진행중</c:if>
 								</p>
 								<span>주문번호 ${full.BSEQID}</span>
 							</div>

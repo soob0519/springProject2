@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,14 +12,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, minimum-scale=1.0, user-scalable=yes" />
 	<title>상세내역</title>
 	<link rel="stylesheet" href="/css/style.css">
-	<script src="js/jquery-1.10.2.min.js"></script>
-	<script src="js/script.js"></script>
+	<script src="/js/jquery-1.10.2.min.js"></script>
+	<script src="/js/script.js"></script>
 </head>
 
 <script>
-
-
+	$(function(){
+		$("#btn_cancel").click(function(){
+			location = "/canRequest/${dbuyDto.bseqid}";
+		});
+	});
 </script>
+
 
 <style>
 .pc_table {
@@ -69,43 +74,7 @@
 
 </style>
 <body>
-<header id="header">
-			<div class="flex_between header_wrap">
-
-				<nav class="total_menu">
-					<a href="#none" class="menu_btn">
-						<span></span>
-						<span></span>
-						<span></span>
-					</a>
-					<a href="#none"><span class="blind">전체메뉴버튼</span></a>
-				</nav>
-
-				<h1 class="header_logo">
-					<a href="">~로~고~</a>
-					<span class="blind">쇼핑몰 로고</span>
-				</h1>
-
-				<ul class="snb flex_end">
-					<li>
-						<a href="#none">로그인</a>
-					</li>
-					<li>
-						<a href="#none">가입</a>
-					</li>
-					<li>
-						<a href="#none">검색</a>
-					</li>
-					<li>
-						<a href="#none">찜</a>
-					</li>
-					<li>
-						<a href="#none">장바구니</a>
-					</li>
-				</ul>
-
-			</div>
-		</header>
+<!-- include file="/include/header.jsp" -->
 
 
 		<article class="contents wrap">
@@ -130,6 +99,7 @@
 						    <c:if test="${dbuyDto.state == 2}">구매</c:if>
 						    <c:if test="${dbuyDto.state == 3}">취소</c:if>
 						    <c:if test="${dbuyDto.state == 4}">부분취소</c:if>
+						    <c:if test="${dbuyDto.state == 5}">취소진행중</c:if>
 							</th>
 						</tr>
 					</table>
@@ -145,7 +115,20 @@
 					</colgroup>
 						<tr>
 							<th colspan="4">주문상품</th>
-							<td class="button_td"><button type="button" id="btn_cancel">취소신청</button></td>
+							<td class="button_td">
+								<c:if test="${dbuyDto.state == 1}">
+									<button type="button" id="btn_cancel">취소신청</button>
+								</c:if>
+						    	<c:if test="${dbuyDto.state == 2}">
+						    		<button type="button" id="btn_cancel">취소신청</button>
+						    	</c:if>
+						    	<c:if test="${dbuyDto.state == 4}">
+						    		<button type="button" id="btn_cancel">취소신청</button>
+						    	</c:if>
+						    	<c:if test="${dbuyDto.state == 5}">
+						    		<button type="button" id="btn_cancel">취소신청</button>
+						    	</c:if>
+							</td>
 						</tr>
 						<tr>
 							<th></th>

@@ -13,8 +13,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, minimum-scale=1.0, user-scalable=yes" />
 	<title>취소내역목록</title>
 	<link rel="stylesheet" href="css/style.css">
-	<script src="js/jquery-1.10.2.min.js"></script>
-	<script src="js/script.js"></script>
+	<script src="/js/jquery-1.10.2.min.js"></script>
+	<script src="/js/script.js"></script>
 </head>
 
 <script>
@@ -30,7 +30,7 @@
 	.list2 .prod_image {width: 50px; height: 50px; transform: translateY(-50%); position: relative; top: 50%;}
 </style>
 <body>
-<header id="header">
+		<header id="header">
 			<div class="flex_between header_wrap">
 
 				<nav class="total_menu">
@@ -91,6 +91,7 @@
 								<p>
 									<c:if test="${can.STATE == 3}">취소</c:if>
 									<c:if test="${can.STATE == 4}">부분취소</c:if>
+									<c:if test="${can.STATE == 5}">취소진행중</c:if>
 								</p>
 								<span>주문번호 ${can.BSEQID}</span>
 							</div>
