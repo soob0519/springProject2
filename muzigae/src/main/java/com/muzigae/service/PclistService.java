@@ -21,6 +21,10 @@ public interface PclistService {
 	 */
 	DbuyDto selectdbuyDetail(int bseqid) throws Exception;
 	/**
+	 * 구매 상세내역 - 배송지변경
+	 */
+	int updateAddr(String newAddr, int bseqid) throws Exception;
+	/**
 	 * 고객정보
 	 */
 	DcustomerDto selectDcustomerDetail(String user_id) throws Exception;
@@ -36,6 +40,15 @@ public interface PclistService {
 	 * 주문목록 취소 리스트
 	 */
 	List<?> selectCancelList(DbuyDto dto) throws Exception;
+	/**
+	 * 구매목록 취소 업데이트
+	 */
+	int cancelEach(String datas, int recode) throws Exception;
+	/**
+	 * 구매목록 취소 업데이트
+	 */
+	int updateDbuyCancel(int bseqid) throws Exception;
+	
 	
 	
 	

@@ -31,6 +31,11 @@ public class PclistServiceImpl implements PclistService {
 	public DbuyDto selectdbuyDetail(int bseqid) throws Exception {
 		return mapper.selectdbuyDetail(bseqid);
 	}
+	
+	@Override
+	public int updateAddr(String newAddr, int bseqid) throws Exception {
+		return mapper.updateAddr(newAddr,bseqid);
+	}
 
 	@Override
 	public DcustomerDto selectDcustomerDetail(String user_id) throws Exception {
@@ -51,5 +56,16 @@ public class PclistServiceImpl implements PclistService {
 	public List<?> selectCancelList(DbuyDto dto) throws Exception {
 		return mapper.selectCancelList(dto);
 	}
+
+	@Override
+	public int cancelEach(String datas, int recode) {
+		return mapper.cancelEach(datas,recode);
+	}
+
+	@Override
+	public int updateDbuyCancel(int bseqid) {
+		return mapper.updateDbuyCancel(bseqid);
+	}
+
 
 }
