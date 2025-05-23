@@ -104,44 +104,7 @@
 	});
 </script>
 <body>
-		<header id="header">
-			<div class="flex_between header_wrap">
-
-				<nav class="total_menu">
-					<a href="#none" class="menu_btn">
-						<span></span>
-						<span></span>
-						<span></span>
-					</a>
-					<a href="#none"><span class="blind">전체메뉴버튼</span></a>
-				</nav>
-
-				<h1 class="header_logo">
-					<a href="">~로~고~</a>
-					<span class="blind">쇼핑몰 로고</span>
-				</h1>
-
-				<ul class="snb flex_end">
-					<li>
-						<a href="#none">로그인</a>
-					</li>
-					<li>
-						<a href="#none">가입</a>
-					</li>
-					<li>
-						<a href="#none">검색</a>
-					</li>
-					<li>
-						<a href="#none">찜</a>
-					</li>
-					<li>
-						<a href="#none">장바구니</a>
-					</li>
-				</ul>
-
-			</div>
-		</header>
-
+<%@include file="/include/header.jsp" %>
 
 		<article class="contents wrap">
 			<section>
