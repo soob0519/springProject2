@@ -196,7 +196,7 @@ footer {height: 300px; background: #3b3b3b; position: relative; left: 0; bottom:
     .contents_items ul li {width: 50%;}
     
     
-    .buy_frame {position: fixed; background: #fff; left: 0; bottom: 0; right: 0; display: none; z-index: 1001;}
+    .buy_frame {position: fixed; background: #fff; left: 0; bottom: 0; right: 0; display: none; z-index: 1001; border-top: 1px solid #d1d1d1;}
     .buy_main_option_box {padding: 0 20px;}
     .buy_total {padding: 0 20px;}
     .buy_btn_frame {display: flex; flex-direction: column-reverse;}
