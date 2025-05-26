@@ -59,8 +59,8 @@ public class DprodDto {
 	public void setColor(String color) {
 		this.color = color;
 	}
-	public String getPrice() {
-		return String.format("%,d", price); // "1,234,567"
+	public int getPrice() {
+		return price; // "1,234,567"
 	}
 	public void setPrice(int price) {
 		this.price = price;
@@ -74,10 +74,6 @@ public class DprodDto {
 
 	
 	
-	// 계산용
-	public int getRawPrice() {
-	    return price;
-	}
 	// 출력용
 	public String getFormattedPrice() {
 	    return String.format("%,d", price);
