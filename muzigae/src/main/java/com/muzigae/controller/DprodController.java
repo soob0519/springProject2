@@ -90,14 +90,4 @@ public class DprodController {
 		return "home/home_page";
 	}
 	
-	
-	
-	/**
-	 * test
-	 */
-	@GetMapping("testFile")
-	public String testFile() throws Exception {
-		return "prodDetail/testFile";
-	}
-	
 }
