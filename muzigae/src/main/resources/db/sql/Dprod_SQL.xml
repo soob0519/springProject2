@@ -154,7 +154,6 @@
 				,PNAME
 				,COLOR
 				,PRICE
-				,QUAN
 				,TO_CHAR(RDATE,'YYYY-MM-DD') RDATE
 				,FILE1
 				,FILE2
