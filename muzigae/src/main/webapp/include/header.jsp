@@ -16,7 +16,7 @@
 		<div class="flex_end header_wrap">
 
 			<h1 class="header_logo">
-				<a href="https://muzigae-mansion.com/" target="_blank">LOGO</a>		<!-- 무지개맨션 링크 걸어놨음.. -->
+				<a href="/home_page">LOGO</a>		<!-- 무지개맨션 링크 걸어놨음.. -->
 				<span class="blind">쇼핑몰 로고</span>
 			</h1>
 
