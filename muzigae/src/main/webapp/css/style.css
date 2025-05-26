@@ -17,7 +17,7 @@ body {font-size: 14px; color: #111;}
 
 
 /* title_style */
-.prod_h2 {text-align: center; margin: 20px 0; font-size: 30px;}
+.prod_h2 {text-align: center; margin: 20px 0; font-size: 28px;}
 .prod_h3 {margin: 50px 0 10px 0; font-size: 20px;}
 .prod_h4 {font-size: 18px;}
 .prod_h5 {font-size: 16px;}
@@ -99,10 +99,11 @@ body {font-size: 14px; color: #111;}
 .buy_tbl_info td {}
 .buy_tit {margin-bottom: 20px;}
 .buy_tit span {font-size: 14px; color: darkcyan;}
+.buy_win_frame {}
 .buy_main {margin-top: 20px;}
 .buy_total {margin: 10px 0;}
 .buy_total {}
-.total_price {font-size: 310px;}
+.total_price {font-size: 20px !important;}
 .buy_total i span {font-size: 12px;}
 .buy_prod_option {width: 100%; margin: 10px 0; padding: 10px 5px;}
 .buy_select_list {padding: 20px 0; border-bottom: 1px solid #d1d1d1; display: none;}
@@ -147,7 +148,11 @@ body {font-size: 14px; color: #111;}
 .buy_sub_detail ul li {height: 30%;}
 .buy_sub_detail ul li:nth-child(3) {padding-top: 10px;}
 .sub_select {width: 100%;}
-
+/* buy_hidden_button */
+.buy_hidden_btn_box {position: fixed; bottom: 0; left:0; right: 0; display: none;}
+.buy_hidden_btn_box .buy_btn_area {gap: 0 !important; flex-direction: row-reverse;}
+.buy_hidden_btn_box .buy_btn_area li:first-child {width: 85%;}
+.buy_hidden_btn_box .buy_btn_area li:last-child {background: #fff;}
 
 
 footer {height: 300px; background: #3b3b3b; position: relative; left: 0; bottom: 0; right: 0;}
@@ -168,6 +173,8 @@ footer {height: 300px; background: #3b3b3b; position: relative; left: 0; bottom:
 
 @media screen and (max-width: 1200px) {
     #header {height: 80px;}
+    .prod_h2 {transform: scale(0.8);}
+    .prod_h3 {font-size: 18px;}
     .total_menu {transform: scale(0.8);}
     .header_wrap {height: 80px; line-height: 80px;}
     .total_menu .menu_btn {top: 40%;}
@@ -177,6 +184,7 @@ footer {height: 300px; background: #3b3b3b; position: relative; left: 0; bottom:
     .snb .snb_search,.snb .snb_cart {display: block;}
     
     .contents {margin-top: 130px; flex-wrap: wrap-reverse;}
+    .prod_category {transform: scale(0.9);}
     .prod_detail {width: 100%; padding: 0;}
     .guard {width: 100%; height: 100%; margin-bottom: 80px;}
     .order_buy.sticky {position: relative; top: 0;}
@@ -186,6 +194,16 @@ footer {height: 300px; background: #3b3b3b; position: relative; left: 0; bottom:
 
 @media screen and (max-width: 767px) {
     .contents_items ul li {width: 50%;}
+    
+    
+    .buy_frame {position: fixed; background: #fff; left: 0; bottom: 0; right: 0; display: none; z-index: 1001;}
+    .buy_main_option_box {padding: 0 20px;}
+    .buy_total {padding: 0 20px;}
+    .buy_btn_frame {display: flex; flex-direction: column-reverse;}
+    .buy_btn_area {padding: 0 !important;}
+    .easy_buy {padding: 0 20px;}
+    .buy_hidden_btn_box {display: block; z-index: 1000;}
+    
 }
 
 
