@@ -22,6 +22,7 @@
 		<style>
 			#header {background: none; border: none;}
 			.main_visual {width: 100%; height: 100vh;}
+			.snb li a {color: #fff; text-shadow: 1px 1px 4px rgba(0,0,0,.9);}
 		</style>
 		
 	</head>
