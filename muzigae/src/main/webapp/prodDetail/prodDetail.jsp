@@ -18,17 +18,13 @@
   		<script src="../js/jquery-ui.js"></script>
   		
 		<script src="../js/script.js"></script>
+	
+		<script>
+		    var productName = "${dto.pname}";
+		    var productPrice = "${dto.price}";
+		</script>
 		
 	</head>
-	
-	
-	
-	<script>
-	    var productName = "${dto.pname}";
-	    var productPrice = "${dto.rawPrice}";
-	</script>
-	
-	
 	
 	<body>
 	
@@ -62,6 +58,7 @@
 					<img src="../images/prod_detail/${dto.file2}" alt="detail_image" class="detail_image">
 				</section>
 
+				<!--  리뷰..보류
 				<section class="detail_review">
 					<table class="de_board_tbl">
 						<div class="de_board_tit flex_start">
@@ -108,14 +105,7 @@
 						</ul>
 						<button class="next_btn" type="button" id="btn_next">다음</button>
 					</div>
-					<!-- <div class="paging flex_center">
-						<c:forEach var="p" begin="1" end="${totalPage}" >
-							<a href="/nboardList?pageIndex=${p}">${p}</a>
-						</c:forEach>
-					</div> -->
-					
 				</section>
-
 
 				<section class="detail_QnA">
 					<table class="de_board_tbl">
@@ -159,14 +149,9 @@
 						</ul>
 						<button class="next_btn" type="button" id="btn_next">다음</button>
 					</div>
-					<!-- <div class="paging flex_center">
-						<c:forEach var="p" begin="1" end="${totalPage}" >
-							<a href="/nboardList?pageIndex=${p}">${p}</a>
-						</c:forEach>
-					</div> -->
 					
 				</section>
-				
+				 -->
 			</article>
 
 			<!-- 주문 창 -->
@@ -207,34 +192,22 @@
 					</section>
 					
 					<!-- 구매옵션 선택 시작 -->
-					<section>
+					<section class="buy_frame click_area" id="buy_frame">
 						<div class="buy_main">
-							<h5 class="prod_h5">옵션명</h5>
-
-							<select name="buy_prod_option" id="buy_prod_option" class="buy_prod_option">
-								<option value="">[필수] 옵션 선택</option>
+							<div class="buy_main_option_box">
+								<h5 class="prod_h5">옵션명</h5>
+	
+								<select name="buy_prod_option" id="buy_prod_option" class="buy_prod_option">
+									<option value="">[필수] 옵션 선택</option>
+									
+										<c:forEach var="color" items="${colorList }">
+											<option value="${color}">${color}</option>
+										</c:forEach>
+								</select>			
 								
-									<c:forEach var="color" items="${colorList }">
-										<option value="${color}">${color}</option>
-									</c:forEach>
-							</select>			
-							
-							<div class="buy_select_list">
-								<ul class="flex_between">
-									<li>
-										<p>${dto.pname}</p>
-										<span>${dto.color}</span>
-									</li>
-									<li class="flex_center">
-										<a href="#none" class="quan_minus">-</a>
-										<input type="text" class="quan" id="quan" value="1"/>
-										<a href="#none" class="quan_plus">+</a>
-										<i id="btn_cancle">x</i>
-									</li>
-									<li>
-										<p class="item_price">${dto.price}</p>
-									</li>
-								</ul>
+								<div class="buy_select_list">
+									<!-- 자바스크림트에서 데이터가 넘어오는 부분..(구매옵션) -->
+								</div>
 							</div>
 						<!-- 구매옵션 선택 끝 -->
 
@@ -247,7 +220,7 @@
   								</i>
 							</div>
 
-							<div>
+							<div class="buy_btn_frame">
 								<ul class="buy_btn_area flex_between">
 									<li>
 										<a href="#none">바로구매하기</a>
@@ -259,29 +232,33 @@
 										<a href="#none"><i class="fa-regular fa-heart"></i></a>
 									</li>
 								</ul>
+							
+								<div class="easy_buy">
+									<div class="kakao_pay">
+										<ul class="flex_start">
+											<li>
+												<p>kakao</p>
+												<span>간편구매</span>
+											</li>
+											<li><a href="#none">간편구매</a></li>
+											<li><a href="#none">찜</a></li>
+										</ul>
+									</div>
+		
+									<div class="naver_pay">
+										<ul class="flex_start">
+											<li>
+												<p>네e버</p>
+												<span>네e버ID 간편구매</span>
+											</li>
+											<li><a href="#none">Npay</a></li>
+											<li><a href="#none">찜</a></li>
+										</ul>
+									</div>
+								</div>
+								
 							</div>
-
-							<div class="kakao_pay">
-								<ul class="flex_start">
-									<li>
-										<p>kakao</p>
-										<span>간편구매</span>
-									</li>
-									<li><a href="#none">간편구매</a></li>
-									<li><a href="#none">찜</a></li>
-								</ul>
-							</div>
-
-							<div class="naver_pay">
-								<ul class="flex_start">
-									<li>
-										<p>네e버</p>
-										<span>네e버ID 간편구매</span>
-									</li>
-									<li><a href="#none">Npay</a></li>
-									<li><a href="#none">찜</a></li>
-								</ul>
-							</div>
+							
 						</div>
 
 						<!-- 추가상품 -->
@@ -318,7 +295,21 @@
 						
 					</section>
 				</article>
+				
 			</div>
+		</div>
+		
+		
+		<!-- media_hidden_button -->
+		<div class="buy_hidden_btn_box">
+			<ul class="buy_btn_area flex_between">
+				<li class="hidden_btn_buy click_area">
+					<a href="#none">구매하기</a>
+				</li>
+				<li class="hidden_btn_cart">
+					<a href="#none"><i class="fa-solid fa-cart-shopping"></i></a>
+				</li>
+			</ul>
 		</div>
 
 		<footer id="footer">
