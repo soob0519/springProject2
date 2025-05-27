@@ -78,10 +78,10 @@ $(document).ready(function(){
 	                    <p>${productName}</p>
 	                    <span>${opt.color}</span>
 	                </li>
-	                <li class="flex_center">
-	                    <a href="#none" class="quan_minus click_area">-</a>
+	                <li class="quan_btns flex_center">
+	                    <a class="quan_minus click_area">-</a>
 	                    <input type="text" class="quan" value="${opt.quantity}" />
-	                    <a href="#none" class="quan_plus click_area">+</a>
+	                    <a class="quan_plus click_area">+</a>
 	                    <i class="btn_remove_option click_area">x</i>
 	                </li>
 	                <li><p class="item_price">${total.toLocaleString()}원</p></li>
@@ -142,20 +142,29 @@ $(document).ready(function(){
 	$(".hidden_btn_buy").click(function(){
 		$(".buy_frame").slideToggle(300);
 	});
-	$(document).click(function(e) {
-	    if (!$(e.target).closest('.click_area').length) {
-	        $(".buy_frame").slideUp(300);
-	    }
-	});
-	/**
-	 * 반응형.. 창크기 키웠을 때 표시
-	 */
-	$(window).on('resize', function(){
+	
+	let isRecentlyResized = false;
+
+	$(window).on('resize',function(){
 		if(window.innerWidth > 767) {
 			$(".buy_frame").show();
+			isRecentlyResized = true;
+			setTimeout(() => {
+				isRecentlyResized = false;
+			}, 500);
 		} else {
 			$(".buy_frame").hide();
 		}
+	});
+	
+	$(document).click(function(e) {
+		if(isRecentlyResized) return;	//resize 직후 안닫히게
+		
+		if(window.innerWidth > 767) return;
+		
+	    if (!$(e.target).closest('.click_area').length) {
+	        $(".buy_frame").slideUp(300);
+	    }
 	});
 });
 
