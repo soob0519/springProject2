@@ -8,7 +8,7 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <title>상품정보 등록화면</title>
+  <title>상품정보 수정 화면</title>
 	<link rel="stylesheet" href="../css/style.css" />
 	<link rel="stylesheet" href="../css/jquery-ui.css">
   	<script src="../js/jquery-3.7.1.js"></script>
@@ -95,7 +95,7 @@
 	<section>
 
 	<div class="div_title">
-	    상품정보 등록 화면
+	    상품정보 수정 화면
 	</div>
 	 
 	<form name="frm">
@@ -107,47 +107,42 @@
 		</colgroup>
 		<tr>
 			<td style="background-color: #e7e7e7;"><label for="item">물품 종류</label></td>
-			<td><input type="text" id="item" name="item" class="input1" value="${dto.item }"></td>
+			<td><input type="text" id="item" name="item" class="input1" value="${dprodDto.item }"></td>
 		</tr>
 		<tr>
 			<td style="background-color: #e7e7e7;"><label for="seqid">제품코드</label></td>
-			<td><input type="text" id="seqid" name="seqid" class="input1" value="${dto.seqid }"></td>
+			<td><input type="text" id="seqid" name="seqid" class="input1" value="${dprodDto.seqid }" readonly></td>
 		</tr>
 		
 		<tr>
 			<td style="background-color: #e7e7e7;"><label for="pname">제품이름</label></td>
-			<td><input type="text" id="pname" name="pname" class="input1" value="${dto.pname }"></td>
+			<td><input type="text" id="pname" name="pname" class="input1" value="${dprodDto.pname }"></td>
 		</tr>
 		
 		<tr>
 			<td style="background-color: #e7e7e7;"><label for="color">색상이름</label></td>
-			<td><input type="text" id="color" name="color" class="input1" value="${dto.color }"></td>
+			<td><input type="text" id="color" name="color" class="input1" value="${dprodDto.color }"></td>
 		</tr>
 		
 		<tr>
 			<td style="background-color: #e7e7e7;"><label for="price">가격</label></td>
-			<td><input type="text" id="price" name="price" class="input1" value="${dto.price }"></td>
+			<td><input type="text" id="price" name="price" class="input1" value="${dprodDto.price }"></td>
 		</tr>
 		
 		<tr>
 			<td style="background-color: #e7e7e7;"><label for="rdate">출시일</label></td>
-			<td><input type="text" id="rdate" name="rdate" class="input1" value="${dto.rdate }"></td>
-		</tr>
-		
-		<tr>
-			<td style="background-color: #e7e7e7;"><label for="quan">재고량</label></td>
-			<td><input type="text" id="quan" name="quan" class="input1" value="${dto.quan }"></td>
+			<td><input type="text" id="rdate" name="rdate" class="input1" value="${dprodDto.rdate }"></td>
 		</tr>
 		
 		<tr>
 			<td style="background-color: #e7e7e7;"><label for="file">사진</label></td>
 			<td style="text-align:left;">
 			&nbsp;
-			<input type="file" id="file1" name="file1" value="${dto.file1 }"> <br>
+			<input type="file" id="file1" name="file1" value="${dprodDto.file1 }"> <br>
 			&nbsp;
-			<input type="file" id="file2" name="file2" value="${dto.file2 }"> <br>
+			<input type="file" id="file2" name="file2" value="${dprodDto.file2 }"> <br>
 			&nbsp;
-			<input type="file" id="file3" name="file3" value="${dto.file3 }">
+			<input type="file" id="file3" name="file3" value="${dprodDto.file3 }">
 			</td>
 		</tr>
 		
