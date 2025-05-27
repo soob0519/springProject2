@@ -32,13 +32,9 @@ public class PclistController {
 		// 세션에서 로그인된 사용자 정보 가져오기 (예: "USER_ID"가 세션에 저장되어 있다고 가정)
 	    String user_id = (String) session.getAttribute("USER_ID");
 	    if(user_id != null) {
-	    	// model.addAttribute("alertMessage", "로그인이 필요합니다.");
-	        // return "redirect:/login";
-	    	user_id = "test1";
-	    } else {
-	    	user_id = "test1";
-	    }
-	    user_id = "test1";
+	    	model.addAttribute("alertMessage", "로그인이 필요합니다.");
+	        return "redirect:/dmember/dlogin1";
+	    } 
 	    
 	    dto.setUser_id(user_id);
 		// 기존 목록 조회
@@ -57,13 +53,9 @@ public class PclistController {
 		// 세션에서 로그인된 사용자 정보 가져오기 (예: "USER_ID"가 세션에 저장되어 있다고 가정)
 	    String user_id = (String) session.getAttribute("USER_ID");
 	    if(user_id != null) {
-	    	// model.addAttribute("alertMessage", "로그인이 필요합니다.");
-	        // return "redirect:/login";
-	    	user_id = "test1";
-	    } else {
-	    	user_id = "test1";
-	    }
-	    user_id = "test1";
+	    	model.addAttribute("alertMessage", "로그인이 필요합니다.");
+	        return "redirect:/dmember/dlogin1";
+	    } 
 	    
 	    dto.setUser_id(user_id);
 		// 기존 목록 조회
@@ -80,13 +72,9 @@ public class PclistController {
 		// 세션에서 로그인된 사용자 정보 가져오기 (예: "USER_ID"가 세션에 저장되어 있다고 가정)
 	    String user_id = (String) session.getAttribute("USER_ID");
 	    if(user_id != null) {
-	    	// model.addAttribute("alertMessage", "로그인이 필요합니다.");
-	        // return "redirect:/login";
-	    	user_id = "test1";
-	    } else {
-	    	user_id = "test1";
-	    }
-	    user_id = "test1";
+	    	model.addAttribute("alertMessage", "로그인이 필요합니다.");
+	        return "redirect:/dmember/dlogin1";
+	    } 
 	    
 	    dto.setUser_id(user_id);
 		// 기존 목록 조회
@@ -100,16 +88,12 @@ public class PclistController {
 	public String selectPcDetail(@PathVariable int bseqid
 												,ModelMap model
 												,HttpSession session) throws Exception {
-	    // 세션에서 로그인된 사용자 정보 가져오기 (예: "USER_ID"가 세션에 저장되어 있다고 가정)
+		// 세션에서 로그인된 사용자 정보 가져오기 (예: "USER_ID"가 세션에 저장되어 있다고 가정)
 	    String user_id = (String) session.getAttribute("USER_ID");
 	    if(user_id != null) {
-	    	// model.addAttribute("alertMessage", "로그인이 필요합니다.");
-	        // return "redirect:/login";
-	    	user_id = "test1";
-	    } else {
-	    	user_id = "test1";
-	    }
-	    user_id = "test1";
+	    	model.addAttribute("alertMessage", "로그인이 필요합니다.");
+	        return "redirect:/dmember/dlogin1";
+	    } 
 	    
 	    // 잘못된 접근 처리
 	    if (bseqid <= 0) {
@@ -163,13 +147,9 @@ public class PclistController {
 		// 세션에서 로그인된 사용자 정보 가져오기 (예: "USER_ID"가 세션에 저장되어 있다고 가정)
 	    String user_id = (String) session.getAttribute("USER_ID");
 	    if(user_id != null) {
-	    	// model.addAttribute("alertMessage", "로그인이 필요합니다.");
-	        // return "redirect:/login";
-	    	user_id = "test1";
-	    } else {
-	    	user_id = "test1";
-	    }
-	    user_id = "test1";
+	    	model.addAttribute("alertMessage", "로그인이 필요합니다.");
+	        return "redirect:/dmember/dlogin1";
+	    } 
 	    
 	    // 잘못된 접근 처리
 	    // 나중에 홈페이지로 변경하기
