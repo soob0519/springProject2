@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.muzigae.mapper.DproductsMapper">
+
+	<insert id="insertDproducts">
+		INSERT INTO DPROD( ITEM
+						   ,RSEQID
+						   ,PNAME
+						   ,COLOR
+						   ,PRICE
+						   ,RDATE
+						   ,FILEA
+						   ,FILEB
+						   ,FILEC
+					) VALUES (
+								'${item}'
+							   ,'${rseqid}'
+							   ,'${pname}'
+							   ,'${color}'
+							   ,'${price}'
+							   ,'${rdate}'
+							   ,'${filea}'
+							   ,'${fileb}'
+							   ,'${filec}' )
+	</insert>
+	
+	<select id="selectdproductsDetail" resultType="DprodDto">
+		SELECT ITEM
+			   ,RSEQID
+			   ,PNAME
+			   ,COLOR
+			   ,PRICE
+			   ,RDATE
+			   ,FILEA
+			   ,FILEB
+			   ,FILEC
+		FROM Dprod
+		WHERE RSEQID = '${rseqid}'
+	</select>
+	
+	<select id="selectProductsList" resultType="Map">
+		SELECT ITEM
+			   ,RSEQID
+			   ,PNAME
+			   ,COLOR
+			   ,PRICE
+			   ,RDATE
+			   ,FILEA
+			   ,FILEB
+			   ,FILEC
+		FROM 
+				Dprod
+		ORDER BY
+				RSEQID DESC
+	</select>
+	
+	<delete id="deleteProductsEach"> 
+		DELETE FROM 
+					Dprod 
+		WHERE 
+				RSEQID IN (${datas}) 
+	</delete>
+	
+	<insert id="insertCategory">
+		INSERT INTO CATEGORY1(	 CODE
+								,NAME
+								,ORD
+								,USE)
+			VALUES( category1_seq.nextval
+					,'${name}'
+				<if test="ord == ''">
+					,( SELECT NVL(MAX(ORD),0)+1 FROM CATEGORY1 )
+				</if>
+				<if test="ord != ''">
+					,'${ord}'
+				</if>
+					,'N' )
+	</insert>
+	
+	<update id="updateCategoryOrd">
+		  UPDATE 
+		  		 CATEGORY1
+	 		 SET 
+	 		 	 ORD=ORD+1
+		   WHERE 
+		<if test="ord != ''">
+		      ORD >= '${ord}'
+		</if>
+		<if test="ord == ''">
+		      ORD >= (SELECT NVL(MAX(ORD),0)+1 FROM CATEGORY1)
+		</if>
+		
+	</update>
+	
+	<update id="updateCategoryOrd2">
+		UPDATE CATEGORY1 SET
+			
+			<!--  순번이 낮아지는 경우  -->
+			<if test="cate_old_ord &gt; cate_ord">
+				ORD = ORD + 1 WHERE ORD >= ${cate_ord} AND ORD
+				<![CDATA[ < ]]>
+					${cate_old_ord}
+			</if>
+			
+			<!--  순번이 높아지는 경우  -->
+			<if test="cate_old_ord &lt; cate_ord">
+				ORD = ORD - 1 WHERE ORD > ${cate_old_ord} AND ORD
+				<![CDATA[ <= ]]>
+					${cate_ord}
+			</if>
+			
+	</update>
+	
+	<update id="updateCategory"> 
+		UPDATE CATEGORY1 SET NAME=#{cate_name} 
+							,ORD =#{cate_ord} 
+							,USE =#{cate_use} 
+			WHERE 
+					CODE='${cate_code} '
+	</update>
+	
+	<update id="updateCategoryOrd3"> 
+		UPDATE CATEGORY1 SET 
+							ORD = ORD - 1 
+		WHERE 
+				ORD > '${ord}'
+	</update>
+	
+	<delete id="deleteCategory"> 
+		DELETE 
+				FROM CATEGORY1 
+		WHERE 
+				CODE = '${code}'
+	</delete>
+	
+	
+	<select id="selectCategoryList" resultType="Map">
+		SELECT   CODE
+				,NAME
+				,ORD
+				,USE
+		FROM
+				CATEGORY1
+		ORDER  BY
+				ORD ASC
+	</select>
+	
+	
+</mapper>

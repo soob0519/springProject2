@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.muzigae.mapper.DmemberMapper">
+
+	<select id="selectMemeberUserid" resultType="int">
+		SELECT COUNT(*) FROM DCUSTOMER WHERE USER_ID='${user_id}'
+	</select>
+	
+	<insert id="insertMember">
+	
+		INSERT INTO DCUSTOMER ( 
+							USER_ID
+							,PASS
+							,NAME
+							,PHONE
+							,ADDR
+							,MAIL
+							,RDATE
+							,SDATE
+							,BANK
+							,BNUM	
+					) VALUES (
+							'${user_id}'
+							,'${pass}'
+							,'${name}'
+							,'${phone}'
+							,'${addr}'
+							,'${mail}'
+							,SYSDATE
+							,''
+							,'${bank}'
+							,'${bnum}'
+					)
+	</insert>
+	
+	<select id="selectMemberLoginCheck1" resultType="int"> 
+		SELECT COUNT(*) 
+						FROM DCUSTOMER
+			WHERE 
+					user_id='${user_id}' and pass='${pass}' 
+	</select>
+	
+	<select id="selectMemberLoginCheck2" resultType="int"> 
+		SELECT COUNT(*) 
+						FROM DMANAGER 
+			WHERE 
+					mgr_id='${mgr_id}' and pass='${pass}' 
+	</select>
+</mapper>
