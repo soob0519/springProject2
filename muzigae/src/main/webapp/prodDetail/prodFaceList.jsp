@@ -80,8 +80,9 @@
 
 		</article>
 
-		<footer id="footer">
-
-		</footer>
+	
+		<!-- header -->
+		<%@ include file="../include/footer.jsp" %>
+		
 	</body>
 </html>
