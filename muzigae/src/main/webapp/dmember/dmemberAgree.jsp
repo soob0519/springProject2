@@ -33,6 +33,10 @@
 
  <body>
  
+ 	<%@include file="/include/header.jsp" %>
+	
+	<section>
+ 
  <div class="div_title">
 	    회원가입 화면
 	</div>
@@ -91,5 +95,9 @@
  
 </form>
 
+</section>
+
+	<%@include file="/include/footer.jsp" %>
+	
 </body>
 </html>

@@ -10,12 +10,26 @@
   <meta charset="UTF-8">
   <title>회원가입</title>
 	<link rel="stylesheet" href="../css/style.css" />
-	<link rel="stylesheet" href="../css/jquery-ui.css">
   	<script src="../js/jquery-3.7.1.js"></script>
-  	<script src="../js/jquery-ui.js"></script>
+  	
  </head>
  
 	<script>
+	function fn_ajax(sendUrl,sendData) {
+		var msg = "";
+		$.ajax({
+			type : "post",
+			url  : sendUrl,
+			data : sendData,
+			dataType : "text",
+			async : false,    // 비동기 방식을 동기로 바꿈
+			success  : function(data){
+				msg = data;
+			},
+			error    : function(){ msg = "4"; }
+		});
+		return msg;
+	}	
 		
 	$( function() {
 		$("#text_userid").html("<font color='red'>아이디를 입력해주세요.</font>");
@@ -33,7 +47,7 @@
 				 len = 16;
 			}
 			
-			if( len <= 4 || len >= 16 ) {
+			if( len < 4 || len > 16 ) {
 				msg = "아이디는 영문소문자 또는 숫자 4~16자 사이로 입력해주세요.";
 			} else {
 				// 중복체크 - ajax로 세팅
@@ -75,84 +89,47 @@
 	    	let pass   = $.trim($("#pass").val());
 
 	    	let name   = $.trim($("#name").val());
-	    	let phone  = $.trim($("#mobile").val());
-	    	let mail  = $.trim($("#birth").val());
-	    		
+	    	let phone  = $.trim($("#phone").val());
+	    	let mail  = $.trim($("#mail").val());
+	    	
+	    	$("#phone").on("input", function() {
+	    	    this.value = this.value.replace(/[^0-9]/g, '');
+	    	});
+	    	
 			if( mail == "" ) {
 				alert("이메일을 입력해주세요.");
 				$("#mail").focus();
+				return false;
 			}	
 	    	
-	    	let sendData = $("#frm").serialize();
-	    	let sendUrl = "/memberInsert";
+		    let sendData = $("#dmemberFrm").serialize();
+	    	let sendUrl = "/dmemberInsert";
 
 	    	let result = fn_ajax(sendUrl,sendData);
 	    	if( result == "1" ) {
 	    		alert("저장완료!!");
-	    		location = "/dloginWrite";
+	    		location = "/dlogin1";
 	    	} else if( result == "2" ) {
 	    		alert("이미 사용중인 아이디입니다.");
 	    	} else if( result == "3" ) {
 	    		alert("저장실패!!");
 	    	} else {
-	    		alert("오류!! \n관리자에게 연락바랍니다. (02-7777-5555)");
+	    		alert("오류발생!!");
 	    	}
-	    	
-	    	
-	    	let form = new FormData(document.getElementById("dmemberFrm"));
-	    	
-	    	$.ajax({
-    			type : "post",
-    			url  : "/dmemberInsert",
-    			data : form,
-    			dataType : "text",
-    			async : false,    // 비동기 방식을 동기로 바꿈
-    			success  : function(data){
-    				msg = data;
-    			},
-    			error    : function(){ msg = "4"; }
-    		});
-	    	
-	    	let form = new FormData(document.getElementById("goodsFrm"));
-			//let form = $("#goodsFrm").serialize();
-			$.ajax({
-				type : "post",
-				url  : "/goodsInput",
-				data : form,
-				
-				processData: false, // 전송데이터의 인식을 위한 세팅
-				contentType: false, // 전송데이터의 인식을 위한 세팅
-				
-				dataType : "text",
-				success  : function(data){
-					if(data == "ok") {
-						alert("저장완료");
-						location = "/goodsAdminList";
-					} else {
-						alert("저장실패");
-					}
-				},
-				error    : function(){
-					alert("오류발생!!");
-				}
-			});
 	    });
-	} );
+	});
 	</script>
 
  <body>
  
- 	<header>
-	</header>
-	
-	<nav>
-	</nav>
+ 	<%@include file="/include/header.jsp" %>
 	
 	<section>
 
 	<div class="div_title" style="margin-left:100px;">
 	    회원가입 화면
 	</div>
+	<div>
 		<span style="margin-left:400px;color:#e7e7e7;">
 			1. 약관동의  >  
 		</span>
@@ -173,7 +150,7 @@
 		</span>
 	</div>
 	 
-	<form name="dmemberFrm" >
+	<form id="dmemberFrm" name="dmemberFrm" >
 	
 	<input type="hidden" id="useridBox" value="N">
 	
@@ -212,16 +189,7 @@
 		<tr>
 			<td style="background-color: #e7e7e7;">휴대전화*</td>
 			<td>
-				<select id="mobile1" name="mobile1" class="input3" >
-					<option value="010" >010</option>
-					<option value="011" >011</option>
-					<option value="016" >016</option>
-					<option value="017" >017</option>
-					<option value="018" >018</option>
-					<option value="019" >019</option>
-				</select>
-				- <input type="text" id="mobile2" name="mobile2" class="input3">
-				- <input type="text" id="mobile3" name="mobile3" class="input3">
+				<input type="text" id="phone" name="phone" class="input1">
 			</td>
 		</tr>
 		
@@ -241,7 +209,7 @@
 		</tr>
 	
 		<tr>
-			<td style="background-color: #e7e7e7;">이메일*</td>
+			<td style="background-color: #e7e7e7;"><label for="mail">이메일*</label></td>
 			<td>
 				<input type="text" id="mail" name="mail" class="input1">
 			</td>
@@ -254,9 +222,7 @@
 	
 	 <div class="div_button_area">
 	 
-	 	<input type="hidden" id="hcode" value="1">
-	 	
-	 	<button type="submit" class="button2" onclick="fn_submit()">회원가입</button>
+	 	<button type="button" class="button2" id="btn_submit">회원가입</button>
 	 </div>
 	 
 	</form>		
@@ -318,8 +284,7 @@
 
  </section>
  
- <footer>
- </footer>
- 
+ <%@include file="/include/footer.jsp" %>
+	
  </body>
 </html>

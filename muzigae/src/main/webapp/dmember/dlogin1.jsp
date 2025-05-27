@@ -36,13 +36,13 @@
    				success:function(data) {  
 					if( data == "1" ) {   
 						alert($("#user_id").val() + "님 로그인 성공!");
-						location="/dproductsList";
+						location="/home/home_page";
 					} else {
 						alert("잘못된 정보를 입력했습니다.!");
 					} 
    				},
    				error:function(){	
-					alert("로그인 실패!");
+					alert("전송 실패!");
    				}
    			});
    		});
@@ -55,12 +55,16 @@
 </script>
 
 <body>
+	
+	<%@include file="/include/header.jsp" %>
+	
+	<section>
 
  <div class="div_title">
     로그인
  </div>
  
-<form name="frm" >
+<form id="frm" name="frm" >
 
 	<table class="table2">
 		<colgroup>
@@ -91,7 +95,13 @@
 		</div>
 	</div>	
 	
+	
+	
 </form>
+
+</section>
+
+	<%@include file="/include/footer.jsp" %>
 
 </body>
 </html>
