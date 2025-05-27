@@ -33,13 +33,14 @@
 
  <body>
  
- 	<%@include file="/include/header.jsp" %>
+	<%@include file="/include/header.jsp" %>
 	
 	<section>
  
  <div class="div_title">
 	    회원가입 화면
 	</div>
+	<div style="font-size:18px;">
 		<span style="margin-left:30%;">
 			1. 약관동의  >  
 		</span>
@@ -49,7 +50,8 @@
 		<span style="margin-left:30px;color:#e7e7e7;">
 			>  3. 가입완료
 		</span>
-		<br>
+	</div>	
+	<br>
 		
 <form name="frm" >
 
@@ -81,7 +83,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td>
+		<td style="height:20px;">
 			<input type="checkbox" name="chk">
 			개인정보수집 및 이용약관에 동의합니다.
 		</td>
@@ -96,8 +98,8 @@
 </form>
 
 </section>
-
-	<%@include file="/include/footer.jsp" %>
+	
+	<%@include file="/include/header.jsp" %>
 	
 </body>
 </html>
