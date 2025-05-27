@@ -29,7 +29,7 @@ public class DcartController {
 	@Resource
 	DbuyService dbuyService;
 	
-	@GetMapping("dCartList")
+	@GetMapping("cart/list")
 	public String list(DcartDto dto, ModelMap model) throws Exception{
 		List<?> list = dcartService.selectCartList(dto);
 		model.addAttribute("list", list);
@@ -46,7 +46,23 @@ public class DcartController {
 		//List<?> list = dcartService.selectCartList(dto);
 		//model.addAttribute("list", list);
 		System.out.println(selectedItems);
-		return "buy/dBuyIndex";
+		return "buy/dBuyInsert";
+	}
+	
+	@PostMapping("cart/update")
+	public String update(@RequestParam(value = "selectedItems", required = false) List<String> selectedItems, Model model) throws Exception{
+		//List<?> list = dcartService.selectCartList(dto);
+		//model.addAttribute("list", list);
+		System.out.println(selectedItems);
+		return "buy/dBuyInsert";
+	}
+	
+	@PostMapping("cart/delete")
+	public String delete(@RequestParam(value = "selectedItems", required = false) List<String> selectedItems, Model model) throws Exception{
+		//List<?> list = dcartService.selectCartList(dto);
+		//model.addAttribute("list", list);
+		System.out.println(selectedItems);
+		return "buy/dBuyInsert";
 	}
 	
 	
