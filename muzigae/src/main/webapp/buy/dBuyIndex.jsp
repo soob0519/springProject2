@@ -16,59 +16,72 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>주문 / 결제</title>
+  <title>주문 내역 조회</title>
  
 </head>
 <body>
+<%@include file="/include/header.jsp" %>
+  <h1>주문 내역 조회</h1>
 
-<div class="container">
-  <h2>주문 / 결제</h2>
-
-  <!-- 주문 요약 -->
-  <div class="section order-summary">
-    <h3>주문 내역</h3>
-    <table>
+  <table>
+    <thead>
       <tr>
+        <th>주문번호</th>
         <th>상품명</th>
         <th>수량</th>
-        <th>금액</th>
+        <th>색상</th>
+        <th>가격</th>
+        <th>결제수단</th>
+        <th>주문일자</th>
       </tr>
-      <tr>
+    </thead>
+    <tbody>
+    
+    <c:forEach var="item" items="${list}">
+  <tr>
+ 
+ 
+    <td>${item.BSEQID}</td>
+    <td>${item.PNAME}</td>
+    <td>${item.QUAN}</td>
+    <td>${item.COLOR}</td>
+    <td>${item.PRICE * item.QUAN}원</td>
+    <td>
+		<c:choose>
+			<c:when test="${item.PAYMET eq 1}">신용카드</c:when>
+			<c:when test="${item.PAYMET eq 2}">무통장입금</c:when>
+			<c:when test="${item.PAYMET eq 3}">카카오페이</c:when>
+			<c:otherwise>기타</c:otherwise>
+		</c:choose>
+    <td>${item.PDATE}</td>
+  </tr>
+</c:forEach>
+
+      <!-- 예시 데이터 -->
+   <!--    <tr>
+        <td>20240523001</td>
         <td>상품 A</td>
-        <td>1</td>
-        <td>10,000원</td>
-      </tr>
-      <tr>
-        <td>상품 B</td>
         <td>2</td>
         <td>20,000원</td>
+        <td>신용카드</td>
+        <td>2025-05-23</td>
       </tr>
-
-      
-    </table>
-    <div class="total">총 합계:
-    	<span>30,000원</span>
-   </div>
-  </div>
-
-  <!-- 결제 수단 -->
-  <div class="section payment-method">
-    <h3>결제 수단 선택</h3>
-    <label><input type="radio" name="pay" checked> 계좌이체</label>
-  </div>
-
-  <!-- 결제 버튼 -->
-  <button class="btn-pay">결제하기</button>
-</div>
-
+      <tr>
+        <td>20240522002</td>
+        <td>상품 B</td>
+        <td>1</td>
+        <td>10,000원</td>
+        <td>카카오페이</td>
+        <td>2025-05-22</td>
+      </tr> -->
+      <!-- 데이터 없을 경우 -->
+      <!--
+      <tr>
+        <td colspan="6" class="no-orders">주문 내역이 없습니다.</td>
+      </tr>
+      -->
+    </tbody>
+  </table>
+<%@include file="/include/footer.jsp" %>
 </body>
-
-<script>
-	
-	$(".btn-pay").click(function () {
-	    location.href='/dResultBuy'
-	  });
- 
-  </script>
-  
 </html>
