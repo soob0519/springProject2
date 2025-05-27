@@ -9,20 +9,18 @@
 						   ,PNAME
 						   ,COLOR
 						   ,PRICE
-						   ,RDATE
-						   ,FILEA
-						   ,FILEB
-						   ,FILEC
+						   ,FILE1
+						   ,FILE2
+						   ,FILE3
 					) VALUES (
-								'${item}'
-							   ,'${rseqid}'
+							   '${item}'
+								,dprod_seq.nextval
 							   ,'${pname}'
 							   ,'${color}'
 							   ,'${price}'
-							   ,'${rdate}'
-							   ,'${filea}'
-							   ,'${fileb}'
-							   ,'${filec}' )
+							   ,'${file1}'
+							   ,'${file2}'
+							   ,'${file3}' )
 	</insert>
 	
 	<select id="selectdproductsDetail" resultType="DprodDto">
@@ -32,9 +30,9 @@
 			   ,COLOR
 			   ,PRICE
 			   ,RDATE
-			   ,FILEA
-			   ,FILEB
-			   ,FILEC
+			   ,FILE1
+			   ,FILE2
+			   ,FILE3
 		FROM Dprod
 		WHERE RSEQID = '${rseqid}'
 	</select>
@@ -46,16 +44,16 @@
 			   ,COLOR
 			   ,PRICE
 			   ,RDATE
-			   ,FILEA
-			   ,FILEB
-			   ,FILEC
+			    ,FILE1
+			   ,FILE2
+			   ,FILE3
 		FROM 
 				Dprod
 		ORDER BY
 				RSEQID DESC
 	</select>
 	
-	<delete id="deleteProductsEach"> 
+	<delete id="deletedproductsEach"> 
 		DELETE FROM 
 					Dprod 
 		WHERE 

@@ -23,7 +23,7 @@
 					) VALUES (
 							'${user_id}'
 							,'${pass}'
-							,'${name}'
+							,#{name}
 							,'${phone}'
 							,'${addr}'
 							,'${mail}'
@@ -34,6 +34,10 @@
 					)
 	</insert>
 	
+	<select id="selectMemeberUserid2" resultType="int">
+		SELECT COUNT(*) FROM DMANAGER WHERE MNG_ID='${mng_id}'
+	</select>
+	
 	<select id="selectMemberLoginCheck1" resultType="int"> 
 		SELECT COUNT(*) 
 						FROM DCUSTOMER
@@ -41,10 +45,30 @@
 					user_id='${user_id}' and pass='${pass}' 
 	</select>
 	
+	<insert id="dAdminInsert">
+	
+		INSERT INTO DMANAGER ( 
+							MNG_ID
+							,NAME
+							,PASS
+							,PHONE
+							,RDATE
+							,SDATE
+					) VALUES (
+							'${mng_id}'
+							,'${name}'
+							,'${pass}'
+							,'${phone}'
+							,sysdate
+							,''
+					)
+	</insert>
+	
 	<select id="selectMemberLoginCheck2" resultType="int"> 
 		SELECT COUNT(*) 
 						FROM DMANAGER 
 			WHERE 
-					mgr_id='${mgr_id}' and pass='${pass}' 
+					mng_id='${mng_id}' and pass='${pass}' 
 	</select>
+	
 </mapper>
