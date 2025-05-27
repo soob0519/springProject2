@@ -29,7 +29,7 @@
 		<div class="page_path wrap">
 			<ul class="flex_end">
 				<li>
-					<a href="/main_page">home</a>
+					<a href="/home_page">home</a>
 				</li>
 				<li>
 					<a href="/prodTotalList">shop</a>
