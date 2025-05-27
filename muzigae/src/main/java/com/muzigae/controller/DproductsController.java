@@ -39,7 +39,6 @@ public class DproductsController {
 
 		List<?> list = dproductsService.selectCategoryList();
 		model.addAttribute("resultList", list);
-		
 		return "dproducts/dproductsWrite";
 	}
 	
@@ -48,20 +47,14 @@ public class DproductsController {
 	public String dproductInput(MultipartHttpServletRequest request
 							 ,DprodDto dto ) 
 											throws Exception {
-
 		String message = "ok";
-		// 넘어온 데이터를 가져옴
 		Map map = request.getFileMap();
-		// Map의 키값(들)을 가져옴
 		Iterator it = map.entrySet().iterator();
-		
 		int cnt = 1;
-		while( it.hasNext() ) { // 파일의 존재 유무
+		while( it.hasNext() ) { 
 			
-			// 키값이 있는 위치로 커서를 내려보냄
 			Entry entry = (Entry) it.next();
 		
-			// 해당 위치에서 파일의 정보들을 가져온다. 
 			MultipartFile file = (MultipartFile)entry.getValue();
 			
 			System.out.println("111111");
@@ -82,34 +75,30 @@ public class DproductsController {
 					!exe.equals("jpeg") &&
 					!exe.equals("png") ) 
 				{
-					     // 이미지가 아닌경우 실행할 내용 없음
-					
-				} else { // 정상적인 이미지 파일인 경우
+					    
+				} else { 
 					
 					String boxname = file.getName();
 					
-					// 상품 설명 이미지 경로로의 세팅
 					String filepath = dirPath1+"/"+filename;
 					if(boxname.equals("filec")) {
 						filepath = dirPath2+"/"+filename;
 					}
 	
-					// {실 저장} / {파일 카피}
 					file.transferTo(new File(filepath));
 					
-					if( boxname.equals("filea") ) {
-						dto.setFilea(filename);
-					} else if( boxname.equals("fileb") ) {
-						dto.setFileb(filename);
-					} else if( boxname.equals("filec") ) {
-						dto.setFilec(filename);
+					if( boxname.equals("filea1") ) {
+						dto.setFile1(filename);
+					} else if( boxname.equals("fileb1") ) {
+						dto.setFile2(filename);
+					} else if( boxname.equals("filec1") ) {
+						dto.setFile3(filename);
 					} 
 				}
 			}
 			cnt++;
 		}
 
-		System.out.println("22222");
 		int result = dproductsService.insertDproducts(dto);
 		if( result == 0 ) message = "fail";
 		
@@ -195,12 +184,12 @@ public class DproductsController {
 		@PostMapping("dproductsDeleteEach")
 		@ResponseBody
 		public String dproductsDeleteEach(String datas) throws Exception {
-			
 			String msg = "ok";
 			// 1026,1025,1024,1023,
 			datas = datas.substring(0,datas.length()-1);
-			//System.out.println( "datas :::::: " + datas );
+			
 			int result = dproductsService.deletedproductsEach(datas);
+			System.out.println( "datas :::::: " + datas );
 			if( result == 0 ) msg = "fail";
 			
 			return msg;

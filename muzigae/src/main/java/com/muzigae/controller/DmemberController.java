@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.muzigae.dto.DcustomerDto;
+import com.muzigae.dto.DmanagerDto;
 import com.muzigae.service.DcustomerService;
 
 import jakarta.servlet.http.HttpSession;
@@ -61,6 +62,26 @@ public class DmemberController {
 		return msg;
 	}
 	
+	@PostMapping("dAdminInsert")
+	@ResponseBody
+	public String dAdminInsert(DmanagerDto dto) throws Exception {
+		
+		// 저장완료, 저장실패, 중복체크
+		String msg = "1";
+		// 아이디 중복체크
+		int cnt = dcustomerService.selectMemeberUserid(dto.getMng_id());
+		
+		if(cnt > 0) {
+			msg = "2";
+		} else {
+			// 저장 처리
+			int result = dcustomerService.dAdminInsert(dto);
+
+			if( result == 0 ) msg = "3";
+		}
+		return msg;
+	}
+	
 	@PostMapping("useridCheck")
 	@ResponseBody
 	public String useridCheck(String user_id) throws Exception {
@@ -80,6 +101,24 @@ public class DmemberController {
 		return msg;
 	}
 	
+	@PostMapping("useridCheck2")
+	@ResponseBody
+	public String useridCheck2(String mng_id) throws Exception {
+		
+		String msg = "1";
+		// 첫 글자 영문자 / 특수문자(-_#) / 한글 허용 문제
+		// 정규표현식 사용
+		String pattern = "^[a-zA-Z]{1}[a-zA-Z0-9_\\-#]{5,11}";
+		boolean result = mng_id.matches(pattern);  // true or false
+		
+		if( result == false ) {
+			msg = "2";
+			// 중복 아이디 체크
+			int cnt = dcustomerService.selectMemeberUserid2(mng_id);
+			if( cnt > 0 ) msg = "3";
+		}
+		return msg;
+	}
 	
 	
 	// 로그인 화면
@@ -102,21 +141,28 @@ public class DmemberController {
 							   ,HttpSession session ) throws Exception {
 		String msg = "1";
 		// 아이디/암호 확인 작업
+		System.out.println("pass: "+dto.getPass());
 		int cnt = dcustomerService.selectMemberLoginCheck1(dto);
+
+		System.out.println("=a======================"+cnt);
 		if( cnt == 0 ) msg = "2";
 		else {
 			// 세션변수 생성
+		
 			session.setAttribute("SESSION_USERID",dto.getUser_id());
+
+			System.out.println("222222");
 			// 세션변수 유지 기간(시간) 설정
 			// 설정시간 : 초단위 설정 ; 무한대 설정 (-1);
 			session.setMaxInactiveInterval(-1);	 
+			
 		}
 		return msg;
 	}
 	
 	@PostMapping("loginConfirm2")
 	@ResponseBody
-	public String loginConfirm2( DcustomerDto dto
+	public String loginConfirm2(DmanagerDto dto
 							   ,HttpSession session ) throws Exception {
 		String msg = "1";
 		// 아이디/암호 확인 작업
@@ -124,7 +170,7 @@ public class DmemberController {
 		if( cnt == 0 ) msg = "2";
 		else {
 			// 세션변수 생성
-			session.setAttribute("SESSION_USERID",dto.getUser_id());
+			session.setAttribute("SESSION_USERID",dto.getMng_id());
 			// 세션변수 유지 기간(시간) 설정
 			// 설정시간 : 초단위 설정 ; 무한대 설정 (-1);
 			session.setMaxInactiveInterval(-1);	 
@@ -132,25 +178,6 @@ public class DmemberController {
 		return msg;
 	}
 	
-	 @GetMapping("login/{user_id}")
-	    public DcustomerDto getUser(@PathVariable String user_id) throws Exception {
-	        return dcustomerService.findByUserId(user_id);
-	   }
-	 
-	 @PostMapping("login")
-	 public String login(@RequestParam String user_id,
-	                     @RequestParam String pass,
-	                     HttpSession session) throws Exception {
-
-	     DcustomerDto user = dcustomerService.findByUserId(user_id);
-
-	     if (user != null && user.getPass().equals(pass)) {
-	         session.setAttribute("user_id", user_id); // 로그인 성공 시 세션 저장
-	         return "redirect:/dloginAdmin";
-	     }
-
-	     return "redirect:/login";
-	 }
 	 
 	 @GetMapping("/dmember/dloginAdmin")
 	 public String dashboard(HttpSession session) {
