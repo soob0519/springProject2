@@ -4,12 +4,12 @@
 <mapper namespace="com.muzigae.mapper.DcartMapper">
 	<select id="selectCartList" resultType="Map">
 		SELECT
-				c.*, b.*
-			FROM
-				DCART c
-			INNER JOIN
-				DPROD b
-			ON
-				c.RSEQID = b.RSEQID
+		c.*, b.*
+		FROM
+		DCART c
+		INNER JOIN
+		DPROD b
+		ON
+		c.RSEQID = b.RSEQID
 	</select>
 </mapper>

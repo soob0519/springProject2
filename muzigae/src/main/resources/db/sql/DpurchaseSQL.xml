@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.muzigae.mapper.DpurchaseMapper">
+ <insert id="insertPurchase" parameterType="map">
+
+            
+INSERT INTO DPURCHASE(
+  PSEQID, BSEQID, USER_ID, NAME, PDATE, ITEM, RSEQID, PNAME, COLOR,
+  PRICE, QUAN, STATE, USE
+)
+VALUES (
+  seq_dpurchase.nextval,            
+  #{bseqid},              
+  1,              
+  #{name},          
+  SYSDATE, 
+  #{item},          
+  #{rseqid},                
+  #{pname},          
+  #{color},         
+  #{price},            
+  #{quan},               
+  1,                
+  0            
+)
+          
+	</insert> 
+</mapper>

@@ -1,17 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.muzigae.mapper.DbuyMapper">
+<mapper namespace="com.muzigae.mapper.DbuyMapper">   
  <select id="selectBuyList" resultType="Map">
-	select * from DBUY
+				SELECT 
+     b.bseqid, p.pname, pc.price, pm.paymet, pm.pdate, pc.quan, pc.color
+     
+FROM 
+    DBUY b
+JOIN 
+    DCUSTOMER m ON b.user_id = m.user_id
+JOIN 
+    DPURCHASE pc ON b.bseqid = pc.bseqid
+JOIN 
+    DPROD p ON pc.rseqid = p.rseqid    
+JOIN 
+    DPAYMENT pm ON b.bseqid = pm.bseqid   
+WHERE 
+    m.user_id = 1
 </select>
 
-	<select id="selectBuy" resultType="com.muzigae.dto.DbuyDto">
-		select   *
-		from
-				DBUY
-		where
-				BSEQID=#{BSEQID}
+	<select id="selectBuyList02" resultType="Map">
+ 
+								SELECT 
+    b.bseqid, m.name as username, pc.price, pm.paymet as paymet,
+    p.pname, p.color as pcolor
+FROM 
+    DBUY b
+JOIN 
+    DCUSTOMER m ON b.user_id = m.user_id
+JOIN 
+    DPURCHASE pc ON b.bseqid = pc.bseqid
+JOIN 
+    DPROD p ON pc.rseqid = p.rseqid   
+JOIN 
+    DPAYMENT pm ON b.bseqid = pm.bseqid      
+WHERE 
+    b.BSEQID = #{BSEQID}
+				
+				
 	</select>
+	
+	<select id="selectBuy" resultType="com.muzigae.dto.DbuyDto">
+ 
+ 
+ SELECT 
+    b.bseqid,
+    m.name AS username,
+    SUM(pc.price) AS total_price,
+    pm.paymet AS paymet,
+    LISTAGG(p.pname, ', ') WITHIN GROUP (ORDER BY p.pname) AS product_names,
+    LISTAGG(p.color, ', ') WITHIN GROUP (ORDER BY p.color) AS product_colors
+FROM 
+    DBUY b
+JOIN 
+    DCUSTOMER m ON b.user_id = m.user_id
+JOIN 
+    DPURCHASE pc ON b.bseqid = pc.bseqid
+JOIN 
+    DPROD p ON pc.rseqid = p.rseqid   
+JOIN 
+    DPAYMENT pm ON b.bseqid = pm.bseqid      
+WHERE 
+    b.bseqid = #{BSEQID}
+GROUP BY 
+    b.bseqid, m.name, pm.paymet
+ 
+ 
+					     		 
+				
+				
+	</select>
+	      
+	<insert id="insertBuy" parameterType="com.muzigae.dto.DbuyDto">
+<selectKey keyProperty="bseqid" resultType="int" order="BEFORE">
+  SELECT seq_dbuy.NEXTVAL FROM dual
+</selectKey>
+     
+		insert into DBUY(BSEQID, USER_ID, NAME, PHONE, ADDR, PDATE, PRICE, STATE) 
+		values (seq_dbuy.nextval, 1, #{name}, #{phone}, #{addr}, SYSDATE, #{price}, 1)
+	</insert> 
 
 </mapper>
