@@ -89,15 +89,13 @@
 
  <body>
  
-	<%@include file="/include/header.jsp" %>
-	
 	<section>
 
 	<div class="div_title">
 	    상품정보 등록 화면
 	</div>
 	 
-	<form id="frm" name="frm">
+	<form id="frm" name="frm" enctype="multipart/form-data">
 
 	<table class="table1">
 		<colgroup>
@@ -106,7 +104,7 @@
 		</colgroup>
 		
 		<tr>
-		<td style="background-color: #e7e7e7;"><label for="item">제품종류</label></td>
+		<td style="background-color: #e7e7e7;"><label for="title">제품종류</label></td>
 		<td><select id="item" name="item" style="margin-left:10px;">
 				<option value="">-----</option>
 	
@@ -155,8 +153,6 @@
 	 
 	</form>		
  </section>
- 
- 	<%@include file="/include/footer.jsp" %>
  
  </body>
  
