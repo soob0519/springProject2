@@ -133,14 +133,15 @@
 						<tr>
 							<th colspan="6">주문상품</th>
 						</tr>
-						<c:forEach var="pdto" items="${pdtoList }">
+						<c:forEach var="pdto" items="${pdtoList }"  varStatus="status">
+						<c:set var="photo" value="${photoDList[status.index]}" />
 						<tr>
 							<td class="checkbox_td">
 								<c:if test="${pdto.state == 1 || pdto.state == 2 || pdto.state == 3 || pdto.state == 4}">
     								<input type="checkbox" name="chk" value="${pdto.pseqid}">
 								</c:if>
 							</td>
-							<td class="image_td"><img class="prod_image" src="/images/nyang.jpg"></td>
+							<td class="image_td"><img class="prod_image" src="/images/prod_thumbnail/${photo.FILE1 }"></td>
 							<td class="product_td">${pdto.pname }</td>
 							<td class="product_td">${pdto.color }</td>
 							<td class="product_td">${pdto.price }</td>

@@ -47,32 +47,30 @@
 
 			<section class="prod_new1 wrap">
 				<h3 class="prod_h3">전체내역</h3>
-				<c:forEach var="full" items="${fullList}">
-					<a href="/pcDetail/${full.BSEQID}">
-					<ul class="prod_new_items">
-						<li>
-							<div class="list flex_start">
-								<p>
-									<c:if test="${full.STATE == 1}">결제 완료</c:if>
-									<c:if test="${full.STATE == 2}">구매</c:if>
-									<c:if test="${full.STATE == 3}">취소</c:if>
-									<c:if test="${full.STATE == 4}">부분취소</c:if>
-									<c:if test="${full.STATE == 5}">취소진행중</c:if>
-								</p>
-								<span>주문번호 ${full.BSEQID}</span>
-							</div>
-							<div class="list2 flex_start">
-								<img class="prod_image" src="/images/nyang.jpg">
-								<span>구매날짜 ${full.PDATE}</span>
-								<span>총가격 ${full.PRICE}</span>
-							</div>
-						</li>
-					</ul>
-					</a>
-					<div>
-					<br>
-					<br>
-					</div>
+				<c:forEach var="full" items="${fullList}" varStatus="status">
+				    <c:set var="photo" value="${photoList[status.index]}" />
+				    <a href="/pcDetail/${full.BSEQID}">
+				        <ul class="prod_new_items">
+				            <li>
+				                <div class="list flex_start">
+				                    <p>
+				                        <c:if test="${full.STATE == 1}">결제 완료</c:if>
+				                        <c:if test="${full.STATE == 2}">구매</c:if>
+				                        <c:if test="${full.STATE == 3}">취소</c:if>
+				                        <c:if test="${full.STATE == 4}">부분취소</c:if>
+				                        <c:if test="${full.STATE == 5}">취소진행중</c:if>
+				                    </p>
+				                    <span>주문번호 ${full.BSEQID}</span>
+				                </div>
+				                <div class="list2 flex_start">
+				                    <img class="prod_image" src="/images/prod_thumbnail/${photo.FILE1 }" />
+				                    <span>구매날짜 ${full.PDATE}</span>
+				                    <span>총가격 ${full.PRICE}</span>
+				                </div>
+				            </li>
+				        </ul>
+				    </a>
+				    <div><br><br></div>
 				</c:forEach>
 			</section>
 

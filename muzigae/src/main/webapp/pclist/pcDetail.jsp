@@ -140,9 +140,10 @@
 							<th class="product_td">상태</th>
 						</tr>
 						
-						<c:forEach var="pdto" items="${pdtoList }">
+						<c:forEach var="pdto" items="${pdtoList }" varStatus="status">
+						<c:set var="photo" value="${photoDList[status.index]}" />
 						<tr>
-							<td class="image_td"><img class="prod_image" src="/images/nyang.jpg"></td>
+							<td class="image_td"><img class="prod_image" src="/images/prod_thumbnail/${photo.FILE1 }"></td>
 							<td class="product_td">${pdto.pname }</td>
 							<td class="product_td">${pdto.price }</td>
 							<td class="product_td">${pdto.color }</td>
