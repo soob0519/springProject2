@@ -32,6 +32,10 @@ public interface PclistMapper {
 
 	int updateDbuyCancel(int bseqid);
 
+	List<?> selectPhotoList(String user_id);
+
+	List<?> selectPhotoDetailList(String user_id, int bseqid);
+
 
 
 }
