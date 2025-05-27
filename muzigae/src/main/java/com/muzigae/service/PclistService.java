@@ -48,6 +48,14 @@ public interface PclistService {
 	 * 구매목록 취소 업데이트
 	 */
 	int updateDbuyCancel(int bseqid) throws Exception;
+	/**
+	 * 주문목록 사진
+	 */
+	List<?> selectPhotoList(String user_id) throws Exception;
+	/**
+	 * 구매목록 사진
+	 */
+	List<?> selectPhotoDetailList(String user_id, int bseqid) throws Exception;
 	
 	
 	

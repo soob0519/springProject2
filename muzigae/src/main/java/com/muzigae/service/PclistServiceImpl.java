@@ -67,5 +67,15 @@ public class PclistServiceImpl implements PclistService {
 		return mapper.updateDbuyCancel(bseqid);
 	}
 
+	@Override
+	public List<?> selectPhotoList(String user_id) throws Exception {
+		return mapper.selectPhotoList(user_id);
+	}
+
+	@Override
+	public List<?> selectPhotoDetailList(String user_id, int bseqid) throws Exception {
+		return mapper.selectPhotoDetailList(user_id,bseqid);
+	}
+
 
 }
