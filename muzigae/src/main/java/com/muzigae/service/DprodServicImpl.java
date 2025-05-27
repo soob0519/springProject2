@@ -12,8 +12,9 @@ public class DprodServicImpl implements DprodService{
 	@Autowired
 	DprodMapper mapper;
 	
+ 
 	@Override
-	public List<?> selectProdList(DprodDto dto) throws Exception {
-		return mapper.selectProdList(dto);
+	public List<?> selectProdList(int rseqid) throws Exception {
+		return mapper.selectProdList(rseqid);
 	}
 }

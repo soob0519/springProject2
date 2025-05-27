@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.muzigae.dto.DbuyDto;
+import com.muzigae.dto.DpaymentDto;
 import com.muzigae.mapper.DbuyMapper;
 
 @Service
@@ -18,7 +19,19 @@ public class DbuyServicImpl implements DbuyService{
 	}
 	
 	@Override
+	public List<?> selectBuyList02(int bseqid) throws Exception {
+		return mapper.selectBuyList02(bseqid);
+	}
+	
+	
+	@Override
 	public DbuyDto selectBuy(int bseqid) throws Exception {
 		return mapper.selectBuy(bseqid);
+	}
+	
+	@Override
+	public int insertBuy(DbuyDto dto) throws Exception {
+		
+		return mapper.insertBuy(dto);
 	}
 }
