@@ -4,25 +4,23 @@ import lombok.Data;
 
 @Data
 public class DcustomerDto {
-	
-	String user_id;
-	String pass;
-	String name;
-	String phone;
-	String addr;
-	String mail;
-	String rdate;
-	String sdate;
-	String bank;
-	String bnum;
-	
-	
-	
-	public String getName() {
-		return name;
+	int hcode;
+    String user_id;
+    String pass;
+    String hname;
+    String phone;
+    String addr;
+    String mail;
+    String rdate;
+    String sdate;
+    String bank;
+    String bnum;
+    
+	public int getHcode() {
+		return hcode;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setHcode(int hcode) {
+		this.hcode = hcode;
 	}
 	public String getUser_id() {
 		return user_id;
@@ -35,7 +33,13 @@ public class DcustomerDto {
 	}
 	public void setPass(String pass) {
 		this.pass = pass;
-	}	
+	}
+	public String getHname() {
+		return hname;
+	}
+	public void setHname(String hname) {
+		this.hname = hname;
+	}
 	public String getPhone() {
 		return phone;
 	}
@@ -78,7 +82,6 @@ public class DcustomerDto {
 	public void setBnum(String bnum) {
 		this.bnum = bnum;
 	}
-	
-	
+
 	
 }

@@ -5,36 +5,16 @@ import lombok.Data;
 @Data
 public class DprodDto {
 
-	String item;
-	int rseqid;
-	String pname;
-	String color;
-	int price;
-	String rdate;
-	String file1;
-	String file2;
-	String file3;
-	
-	
-	
-	public String getFile1() {
-		return file1;
-	}
-	public void setFile1(String file1) {
-		this.file1 = file1;
-	}
-	public String getFile2() {
-		return file2;
-	}
-	public void setFile2(String file2) {
-		this.file2 = file2;
-	}
-	public String getFile3() {
-		return file3;
-	}
-	public void setFile3(String file3) {
-		this.file3 = file3;
-	}
+	 String item;
+	 int rseqid;
+	 String pname;
+	 String color;
+	 int price;
+	 String rdate;
+	 String filea="";
+	 String fileb="";
+	 String filec="";
+	 
 	public String getItem() {
 		return item;
 	}
@@ -60,23 +40,35 @@ public class DprodDto {
 		this.color = color;
 	}
 	public int getPrice() {
-		return price; // "1,234,567"
+		return price;
 	}
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	
 	public String getRdate() {
 		return rdate;
 	}
 	public void setRdate(String rdate) {
 		this.rdate = rdate;
 	}
-
-	
-	
-	// 출력용
-	public String getFormattedPrice() {
-	    return String.format("%,d", price);
+	public String getFilea() {
+		return filea;
+	}
+	public void setFilea(String filea) {
+		this.filea = filea;
+	}
+	public String getFileb() {
+		return fileb;
+	}
+	public void setFileb(String fileb) {
+		this.fileb = fileb;
+	}
+	public String getFilec() {
+		return filec;
+	}
+	public void setFilec(String filec) {
+		this.filec = filec;
 	}
 	
-}
+	}

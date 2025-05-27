@@ -44,6 +44,5 @@ public class DmanagerDto {
 	public void setSdate(String sdate) {
 		this.sdate = sdate;
 	}
-	
-	
+
 }
