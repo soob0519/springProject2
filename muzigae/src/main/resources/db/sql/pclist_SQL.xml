@@ -19,7 +19,27 @@
 		ORDER BY 
 				BSEQID DESC
 		
-	</select>	
+	</select>
+	
+	<select id="selectPhotoList" resultType="Map">
+		SELECT BSEQID, PSEQID, FILE1
+			FROM (
+			    SELECT 
+			        DB.BSEQID	AS BSEQID,
+			        DP.PSEQID	AS PSEQID,
+			        DPR.RSEQID	AS RSEQID,
+			        DPR.FILE1	AS FILE1,
+			        ROW_NUMBER() OVER (PARTITION BY DB.BSEQID ORDER BY DP.PSEQID) AS RN
+			    FROM DBUY DB
+			    JOIN DPURCHASE DP ON DB.BSEQID = DP.BSEQID
+			    JOIN DPROD DPR ON DP.RSEQID = DPR.RSEQID
+			    WHERE DB.USER_ID = #{user_id}
+			)
+			WHERE RN = 1				
+		ORDER BY 
+				BSEQID DESC
+		
+	</select>
 	
 	<select id="selectPcDetail" resultType="dpurchaseDto">
 	SELECT PSEQID
@@ -41,6 +61,29 @@
 				DPURCHASE
 		WHERE 
 				BSEQID = #{BSEQID}
+		ORDER BY 
+				BSEQID DESC
+	</select>
+	
+	<select id="selectPhotoDetailList" resultType="Map">
+
+	   SELECT 
+		DB.BSEQID	AS BSEQID,
+		DP.PSEQID	AS PSEQID,
+		DPR.RSEQID	AS RSEQID,
+		DPR.FILE1	AS FILE1
+	FROM 
+		DBUY DB
+	JOIN 
+		DPURCHASE DP ON DB.BSEQID = DP.BSEQID
+	JOIN 
+		DPROD DPR ON DP.RSEQID = DPR.RSEQID
+	WHERE 
+		DB.USER_ID = #{user_id}
+		AND DB.BSEQID = #{bseqid}
+	ORDER BY 
+		DB.BSEQID DESC
+		
 	</select>
 	
 	<select id="selectdbuyDetail" resultType="dbuyDto">
