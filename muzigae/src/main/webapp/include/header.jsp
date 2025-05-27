@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
- 
+
 <nav class="total_menu">
 	<a href="#none" class="menu_btn">
 		<span></span>
@@ -16,7 +16,7 @@
 		<div class="flex_end header_wrap">
 
 			<h1 class="header_logo">
-				<a href="/home_page">LOGO</a>		<!-- 무지개맨션 링크 걸어놨음.. -->
+				<a href="/home_page">LOGO</a>
 				<span class="blind">쇼핑몰 로고</span>
 			</h1>
 
@@ -44,16 +44,13 @@
 <div id="slide_menu">
 	<ul>
 		<li>
-			<h2><a href="#none" class="sld_mn_tit">메뉴를</a></h2>
+			<h2><a href="#none" class="sld_mn_tit">MEMBERSHIP</a></h2>
 			<ol>
 				<li>
-					<a href="#none" class="sld_mn_subtit">1-1</a>
+					<a href="#none" class="sld_mn_subtit">LOGIN</a>
 				</li>
 				<li>
-					<a href="#none" class="sld_mn_subtit">1-2</a>
-				</li>
-				<li>
-					<a href="#none" class="sld_mn_subtit">1-3</a>
+					<a href="#none" class="sld_mn_subtit">JOIN</a>
 				</li>
 			</ol>
 		</li>
@@ -72,7 +69,7 @@
 			</ol>
 		</li>
 		<li>
-			<h2><a href="#none" class="sld_mn_tit">보아요</a></h2>
+			<h2><a href="#none" class="sld_mn_tit">menu..</a></h2>
 			<ol>
 				<li>
 					<a href="#none" class="sld_mn_subtit">3-1</a>
@@ -85,17 +82,6 @@
 				</li>
 				<li>
 					<a href="#none" class="sld_mn_subtit">3-4</a>
-				</li>
-			</ol>
-		</li>
-		<li>
-			<h2><a href="#none" class="sld_mn_tit">하하</a></h2>
-			<ol>
-				<li>
-					<a href="#none" class="sld_mn_subtit">4-1</a>
-				</li>
-				<li>
-					<a href="#none" class="sld_mn_subtit">4-2</a>
 				</li>
 			</ol>
 		</li>
