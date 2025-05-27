@@ -207,9 +207,7 @@
 
 		</article>
 
-		<footer id="footer">
-
-		</footer>
+		<%@include file="/include/footer.jsp" %>
 </body>
 <script>
 	
