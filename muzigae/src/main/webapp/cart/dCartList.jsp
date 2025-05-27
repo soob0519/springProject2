@@ -20,31 +20,33 @@
 
 </head>
 <body>
-
+<%@include file="/include/header.jsp" %>
 	<h1>장바구니</h1>
-	<form id="cartForm" method="post" action="/cart/insert">
+	<form id="cartForm" method="post" action="/payment">
 		<table id="cartTable">
 			<thead>
 				<tr>
 					<th><input type="checkbox" id="checkAll" /></th>
 					<th>번호</th>
 					<th>상품명</th>
+					<th>색상</th>
 					<th>수량</th>
 					<th>가격</th>
-					<th>삭제</th>
+				<!-- 	<th>삭제</th> -->
 				</tr>
 			</thead>
 			<tbody>
 
 				<c:forEach var="item" items="${list}" varStatus="status">
 					<tr>
-						<td><input type="checkbox" onchange="updateCart()" name="selectedItems"
-							value="${item.RSEQID}" class="rowCheck item-check" /></td>
+						<td><input type="checkbox" name="selectedItems"
+							value="${item.RSEQID}" class="rowCheck" /></td>
 						<td>${status.index + 1}</td>
 						<td>${item.PNAME}</td>
+						<td>${item.COLOR}</td>
 						<td class='quantity'>${item.QUAN}</td>
 						<td class='price'>${item.PRICE}</td>
-						<td><button onclick="removeItem(this)">삭제</button></td>
+						<!-- <td><button onclick="removeItem(this)">삭제</button></td> -->
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -62,10 +64,13 @@
 	    location.href='/buy'
 	  });
 	
-	$("#checkAll").on("change", function () {
-	      $(".rowCheck").prop("checked", this.checked);
-	      updateCart();
-	    });
+	
+ 
+	
+	 $("#checkAll").on("change", function () {
+		    $(".rowCheck").prop("checked", this.checked);
+		    updateCart(); // 체크 전체 선택 시 합계 재계산
+		  });
 
 	    // 결제하기 클릭 전 선택값 체크
 	    $("#cartForm").on("submit", function (e) {
@@ -74,46 +79,24 @@
 	        e.preventDefault();
 	      }
 	    });
+	    
+	    $(".rowCheck").on("change", function () {
+	        updateCart();
+	      });
 	
-    function updateCart() {
-    	  
-      const rows = document.querySelectorAll('#cartTable tbody tr');
-      let grandTotal = 0;
+	    function updateCart() {
+	        let grandTotal = 0;
 
-      
-      
-      /*rows.forEach(row => {
-        const quantity = row.querySelector('.quantity').innerText;
-        const price = row.querySelector('.price').innerText;
-        
-        
-        
-        const total = quantity * price;
-        
-        //console.log(total)
-        //row.querySelector('.total').innerText = total;
-        grandTotal += total;
-      });*/
-      
-      rows.forEach(row => {
-    	    const checkbox = row.querySelector('.item-check');
-    	    if (checkbox && checkbox.checked) {
-    	      const quantity = parseFloat(row.querySelector('.quantity').innerText);
-    	      const price = parseFloat(row.querySelector('.price').innerText);
-    	      const total = quantity * price;
-    	      grandTotal += total;
-    	    }
-    	  });
+	        $(".rowCheck:checked").each(function () {
+	          const row = $(this).closest("tr");
+	          const quantity = parseInt(row.find(".quantity").text());
+	          const price = parseInt(row.find(".price").text());
 
-      
-      console.log(grandTotal)
-      
-      
-      
-     
-      document.getElementById('grandTotal').innerText = grandTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-    
-    }
+	          grandTotal += quantity * price;
+	        });
+
+	        $("#grandTotal").text(grandTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+	      }
 
     function removeItem(button) {
       const row = button.closest('tr');
@@ -122,8 +105,23 @@
     }
 
     // 초기 계산
+    $(document).ready(function () {
     updateCart();
-  </script>
 
+    // 동적 이벤트 연결 (forEach 내부에 생성되었을 경우 대비)
+    $(document).on("change", ".rowCheck", function () {
+      updateCart();
+    });
+  });
+    
+    $("#cartForm").on("submit", function (e) {
+        if ($(".rowCheck:checked").length === 0) {
+          alert("결제할 상품을 선택하세요.");
+          e.preventDefault();
+        }
+      });
+    
+  </script>
+<%@include file="/include/footer.jsp" %>
 </body>
 </html>
