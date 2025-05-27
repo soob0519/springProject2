@@ -42,8 +42,10 @@ public class PclistController {
 	    
 	    dto.setUser_id(user_id);
 		// 기존 목록 조회
-		List<?> list = pclistService.selectFullList(dto);		
+		List<?> list = pclistService.selectFullList(dto);
+		List<?> photoList = pclistService.selectPhotoList(user_id);
         model.addAttribute("fullList", list);
+        model.addAttribute("photoList", photoList);
         
 		return "pclist/fullList";
 	}
@@ -122,11 +124,14 @@ public class PclistController {
 	    DcustomerDto dcustomerDto = pclistService.selectDcustomerDetail(user_id);
 	    // 결제정보
 	    DpaymentDto dpaymentDto = pclistService.selectDpaymentDetail(bseqid);
+	    //사진 정보
+	    List<?> photoDList = pclistService.selectPhotoDetailList(user_id,bseqid);
 	    
 	    model.addAttribute("pdtoList", pdtoList);
 	    model.addAttribute("dbuyDto", dbuyDto);
 	    model.addAttribute("dcustomerDto", dcustomerDto);
 	    model.addAttribute("dpaymentDto", dpaymentDto);
+        model.addAttribute("photoDList", photoDList);
 	    
 	    return "pclist/pcDetail";
 	}
@@ -180,11 +185,14 @@ public class PclistController {
 	    DcustomerDto dcustomerDto = pclistService.selectDcustomerDetail(user_id);
 	    // 결제정보
 	    DpaymentDto dpaymentDto = pclistService.selectDpaymentDetail(bseqid);
+	    //사진 정보
+	    List<?> photoDList = pclistService.selectPhotoDetailList(user_id,bseqid);
 	    
 	    model.addAttribute("pdtoList", pdtoList);
 	    model.addAttribute("dbuyDto", dbuyDto);
 	    model.addAttribute("dcustomerDto", dcustomerDto);
 	    model.addAttribute("dpaymentDto", dpaymentDto);
+        model.addAttribute("photoDList", photoDList);
 	    
 		return "pclist/canRequest";
 	}
