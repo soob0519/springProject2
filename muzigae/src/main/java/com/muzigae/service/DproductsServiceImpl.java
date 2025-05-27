@@ -18,6 +18,8 @@ public class DproductsServiceImpl implements DproductsService {
 
 	@Override
 	public int insertDproducts(DprodDto dto) throws Exception {
+		
+		System.out.println("555555");
 		return mapper.insertDproducts(dto);
 	}
 	

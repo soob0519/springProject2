@@ -15,8 +15,9 @@ public interface DcustomerService {
 
 	int selectMemberLoginCheck1(DcustomerDto dto) throws Exception;
 
-	int selectMemberLoginCheck2(DcustomerDto dto) throws Exception;
+	int dAdminInsert(DmanagerDto dto) throws Exception;
 
-	DcustomerDto findByUserId(String user_id) throws Exception;
+	int selectMemeberUserid2(String mng_id) throws Exception;
 
+	int selectMemberLoginCheck2(DmanagerDto dto) throws Exception;
 }

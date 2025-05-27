@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.muzigae.dto.DcustomerDto;
+import com.muzigae.dto.DmanagerDto;
 import com.muzigae.mapper.DmemberMapper;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,20 +20,14 @@ public class DcustomerServiceImpl implements DcustomerService {
 	@Override
 	public int selectMemeberUserid(String user_id) throws Exception {
 		
-		System.out.println("111111");
 		return mapper.selectMemeberUserid(user_id);
 	}
 
-	 @Override
-	    public DcustomerDto findByUserId(String user_id) {
-	        return mapper.findByUserId(user_id);
-	    }
-
+	
 	 
 	@Override
 	public int insertMember(DcustomerDto dto) throws Exception {
 		
-		System.out.println("22222222");
 		return mapper.insertMember(dto);
 	}
 
@@ -41,10 +36,26 @@ public class DcustomerServiceImpl implements DcustomerService {
 		return mapper.selectMemberLoginCheck1(dto);
 	}
 
+
 	@Override
-	public int selectMemberLoginCheck2(DcustomerDto dto) throws Exception {
+	public int dAdminInsert(DmanagerDto dto) throws Exception {
+		return mapper.dAdminInsert(dto);
+	}
+
+
+
+	@Override
+	public int selectMemeberUserid2(String mng_id) throws Exception {
+		return mapper.selectMemeberUserid2(mng_id);
+	}
+
+
+
+	@Override
+	public int selectMemberLoginCheck2(DmanagerDto dto) throws Exception {
 		return mapper.selectMemberLoginCheck2(dto);
 	}
-	
+
+
 	
 }
